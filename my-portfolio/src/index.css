@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scroll-behavior: smooth; /* Biar kalau klik menu navbar, scrollnya halus */
+}
+
+body {
+  @apply bg-slate-50 text-slate-900; /* Warna dasar light mode */
+}
