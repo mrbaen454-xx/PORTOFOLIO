@@ -1,188 +1,310 @@
 import { motion } from "framer-motion";
-import {
-  Code2,
-  Smartphone,
-  Zap,
-  Globe,
-  Users,
-  Database,
-  Server,
-  Cpu,
-} from "lucide-react";
+import { Globe, Zap, Users, Database, Server, Cpu } from "lucide-react";
 
 const About = () => {
   const skills = [
     {
-      icon: <Server className="text-blue-400" />,
+      icon: <Server size={28} />,
       title: "Backend Development",
       description: "Building robust server-side apps using Java & Spring Boot.",
-      color: "blue",
+      color: "bg-[#38BDF8]",
     },
     {
-      icon: <Globe className="text-emerald-400" />,
+      icon: <Globe size={28} />,
       title: "REST API Design",
       description: "Crafting secure, scalable, and well-documented endpoints.",
-      color: "emerald",
+      color: "bg-[#2563EB]",
     },
     {
-      icon: <Database className="text-amber-400" />,
+      icon: <Database size={28} />,
       title: "DB Management",
       description:
         "Efficiently handling MySQL, PostgreSQL, and data integrity.",
-      color: "amber",
+      color: "bg-yellow-300",
     },
     {
-      icon: <Zap className="text-purple-400" />,
+      icon: <Zap size={28} />,
       title: "Optimization",
       description: "Fine-tuning backend performance for maximum speed.",
-      color: "purple",
+      color: "bg-[#60A5FA]",
     },
   ];
 
   const techStack = [
-    { name: "Java", color: "#f89820" },
-    { name: "Spring Boot", color: "#59666C" },
-    { name: "React", color: "#59666C" },
-    { name: "JavaScript", color: "#6DB33F" },
-    { name: "HTML", color: "#6DB33F" },
-    { name: "CSS", color: "#6DB33F" },
-    { name: "MySQL", color: "#4479A1" },
-    { name: "PostgreSQL", color: "#336791" },
-    { name: "Git", color: "#F05032" },
-    { name: "Maven", color: "#C71A36" },
-    { name: "Hibernate", color: "#59666C" },
+    "Java",
+    "Spring Boot",
+    "React",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "MySQL",
+    "PostgreSQL",
+    "Git",
+    "Hibernate",
   ];
 
-  // Varian animasi untuk container
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  };
-
-  // Varian animasi untuk item (muncul dari bawah)
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
-  };
-
   return (
-    <section id="about" className="py-24 bg-slate-950 relative overflow-hidden">
-      {/* Dekorasi Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+    <section
+      id="about"
+      className="relative py-24 px-4 md:px-6 bg-[#0F172A] overflow-hidden"
+    >
+      {/* BACKGROUND DECORATION */}
+      <motion.div
+        animate={{
+          rotate: [0, 15, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+        }}
+        className="absolute top-16 left-10 w-24 h-24 bg-[#38BDF8] border-[4px] border-black rounded-3xl opacity-20"
+      />
 
-      <div className="container mx-auto px-6">
+      <motion.div
+        animate={{
+          rotate: [0, -10, 0],
+          y: [0, 20, 0],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+        }}
+        className="absolute bottom-10 right-10 w-20 h-20 bg-yellow-300 border-[4px] border-black rounded-full opacity-20"
+      />
+
+      <div className="max-w-6xl mx-auto">
+        {/* MAIN CONTAINER */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0, y: 60, scale: 0.9 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+            type: "spring",
+            stiffness: 100,
+          }}
+          className="bg-[#F8FAFC] border-[4px] border-black rounded-[30px] p-6 md:p-10 shadow-[10px_10px_0px_#000]"
         >
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <motion.h2
-              variants={itemVariants}
-              className="text-3xl md:text-5xl font-bold text-white mb-4"
-            >
-              About <span className="text-blue-500">Me</span>
-            </motion.h2>
+          {/* HEADER */}
+          <div className="text-center mb-12">
             <motion.div
-              variants={itemVariants}
-              className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-8"
-            />
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 bg-[#38BDF8] border-[3px] border-black px-4 py-2 rounded-full shadow-[4px_4px_0px_#000] mb-5"
+            >
+              <Cpu size={16} />
+
+              <span className="font-black text-xs uppercase tracking-widest">
+                About Me
+              </span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-3xl md:text-5xl font-black text-black mb-5"
+            >
+              My <span className="text-[#2563EB]">Journey</span>
+            </motion.h2>
+
             <motion.p
-              variants={itemVariants}
-              className="max-w-3xl mx-auto text-slate-400 text-lg leading-relaxed"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="max-w-2xl mx-auto text-black text-sm md:text-base font-medium leading-relaxed"
             >
               I am a Java Backend Developer passionate about building
-              high-performance systems. My journey is fueled by a commitment to
-              clean code and scalable architecture.
+              high-performance systems with clean architecture, scalability, and
+              maintainable code.
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            {/* KIRI: My Journey & Tech Stack */}
+          {/* CONTENT */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* LEFT SIDE */}
             <motion.div
-              variants={itemVariants}
-              className="lg:col-span-5 space-y-8"
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="space-y-6"
             >
-              <div className="bg-slate-900/40 border border-slate-800 p-8 rounded-3xl backdrop-blur-sm">
-                <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                  <Cpu className="text-blue-500" size={24} /> My Journey
-                </h3>
-                <div className="text-slate-400 space-y-4 leading-relaxed">
-                  <p>
-                    My programming journey began in 2024 when I started studying
-                    at Universitas Nasional PASIM through the PUB scholarship
-                    program. During this opportunity, I received intensive
-                    training in programming and software development.
-                  </p>
-                  <p>
-                    I focus on creating systems that aren't just functional, but
-                    also
-                    <span className="text-blue-400"> reliable</span> and{" "}
-                    <span className="text-blue-400">maintainable</span>.
-                  </p>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-white font-bold mb-4 text-lg">
-                  Tech Stack
-                </h4>
-                <div className="flex flex-wrap gap-3">
-                  {techStack.map((tech, i) => (
-                    <motion.span
-                      key={i}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-300 text-sm font-medium hover:border-blue-500/50 transition-colors"
+              {/* JOURNEY CARD */}
+              <motion.div
+                whileHover={{
+                  y: -5,
+                  rotate: -1,
+                }}
+                className="bg-[#38BDF8] border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]"
+              >
+                <div className="bg-white border-[3px] border-black rounded-2xl p-5 rotate-[-1deg]">
+                  <div className="flex items-center gap-3 mb-4">
+                    <motion.div
+                      animate={{
+                        rotate: [0, 10, -10, 0],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                      }}
+                      className="bg-[#2563EB] text-white border-[3px] border-black p-3 rounded-xl shadow-[4px_4px_0px_#000]"
                     >
-                      {tech.name}
-                    </motion.span>
-                  ))}
+                      <Cpu size={22} />
+                    </motion.div>
+
+                    <h3 className="text-2xl font-black text-black">
+                      My Journey
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4 text-black font-medium leading-relaxed text-sm md:text-[15px]">
+                    <p>
+                      My programming journey began in 2024 when I started
+                      studying at Universitas Nasional PASIM through the PUB
+                      scholarship program.
+                    </p>
+
+                    <p>
+                      I focus on creating systems that are not just functional,
+                      but also reliable, scalable, and easy to maintain.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
+
+              {/* TECH STACK */}
+              <motion.div
+                whileHover={{
+                  y: -5,
+                  rotate: 1,
+                }}
+                className="bg-yellow-300 border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]"
+              >
+                <div className="bg-white border-[3px] border-black rounded-2xl p-5">
+                  <h4 className="text-2xl font-black text-black mb-5">
+                    Tech Stack
+                  </h4>
+
+                  <div className="flex flex-wrap gap-3">
+                    {techStack.map((tech, index) => (
+                      <motion.div
+                        key={index}
+                        whileHover={{
+                          y: -4,
+                          rotate: index % 2 === 0 ? -3 : 3,
+                          scale: 1.05,
+                        }}
+                        className="bg-[#2563EB] text-white border-[3px] border-black px-4 py-2 rounded-xl font-black text-sm shadow-[4px_4px_0px_#000]"
+                      >
+                        {tech}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
 
-            {/* KANAN: What I Do (Bento Grid) */}
-            <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* RIGHT SIDE */}
+            <div className="grid sm:grid-cols-2 gap-5">
               {skills.map((skill, index) => (
                 <motion.div
                   key={index}
-                  variants={itemVariants}
-                  whileHover={{ y: -5 }}
-                  className="group p-6 bg-slate-900/40 border border-slate-800 rounded-3xl hover:bg-slate-800/40 transition-all duration-300"
+                  initial={{
+                    opacity: 0,
+                    y: 50,
+                    rotate: 5,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    rotate: 0,
+                  }}
+                  transition={{
+                    delay: index * 0.15,
+                    type: "spring",
+                    stiffness: 120,
+                  }}
+                  whileHover={{
+                    y: -8,
+                    rotate: index % 2 === 0 ? -2 : 2,
+                    scale: 1.03,
+                  }}
+                  className={`${skill.color} border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]`}
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-slate-950 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                    {skill.icon}
+                  <div className="bg-white border-[3px] border-black rounded-2xl p-5 h-full">
+                    {/* ICON */}
+                    <motion.div
+                      animate={{
+                        y: [0, -5, 0],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        delay: index * 0.3,
+                      }}
+                      className="w-14 h-14 bg-[#0F172A] text-white border-[3px] border-black rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_#000] mb-5"
+                    >
+                      {skill.icon}
+                    </motion.div>
+
+                    {/* TITLE */}
+                    <h4 className="text-xl font-black text-black mb-3">
+                      {skill.title}
+                    </h4>
+
+                    {/* DESCRIPTION */}
+                    <p className="text-black text-sm leading-relaxed font-medium">
+                      {skill.description}
+                    </p>
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">
-                    {skill.title}
-                  </h4>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    {skill.description}
-                  </p>
                 </motion.div>
               ))}
 
-              {/* Extra Card untuk Team Collab */}
+              {/* TEAM CARD */}
               <motion.div
-                variants={itemVariants}
-                className="md:col-span-2 p-6 bg-gradient-to-br from-blue-600/10 to-transparent border border-blue-500/20 rounded-3xl flex items-center gap-6"
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.5,
+                }}
+                whileHover={{
+                  y: -6,
+                  rotate: -1,
+                }}
+                className="sm:col-span-2 bg-[#2563EB] border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]"
               >
-                <div className="hidden sm:flex w-14 h-14 rounded-full bg-blue-600/20 items-center justify-center text-blue-400 shrink-0">
-                  <Users size={28} />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-white">
-                    Agile & Team Player
-                  </h4>
-                  <p className="text-slate-400 text-sm">
-                    Experienced in Git, Jira, and collaborative workflows to
-                    deliver high-quality software.
-                  </p>
+                <div className="bg-white border-[3px] border-black rounded-2xl p-5 flex items-start gap-4">
+                  <motion.div
+                    animate={{
+                      rotate: [0, 10, -10, 0],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                    }}
+                    className="bg-yellow-300 border-[3px] border-black p-3 rounded-2xl shadow-[4px_4px_0px_#000]"
+                  >
+                    <Users size={26} />
+                  </motion.div>
+
+                  <div>
+                    <h4 className="text-xl font-black text-black mb-2">
+                      Agile & Team Player
+                    </h4>
+
+                    <p className="text-black font-medium text-sm leading-relaxed">
+                      Experienced in Git, collaborative workflows, and teamwork
+                      to build high-quality software solutions.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </div>

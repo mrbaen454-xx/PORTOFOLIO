@@ -15,19 +15,25 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (id) => {
     setIsOpen(false);
+
     const element = document.getElementById(id);
+
     if (element) {
       const offset = 80;
+
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
+
       const elementPosition = elementRect - bodyRect;
       const offsetPosition = elementPosition - offset;
 
@@ -39,76 +45,121 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[1000] px-4 sm:px-10 py-6">
+    <header className="fixed top-0 left-0 w-full z-[1000] px-4 py-5">
       <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className={`mx-auto max-w-5xl transition-all duration-500 rounded-2xl ${
+        initial={{ y: -120, opacity: 0, rotate: -2 }}
+        animate={{ y: 0, opacity: 1, rotate: 0 }}
+        transition={{
+          duration: 0.8,
+          type: "spring",
+          stiffness: 120,
+        }}
+        className={`max-w-6xl mx-auto border-[4px] border-black rounded-[24px] transition-all duration-300 ${
           scrolled
-            ? "bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 shadow-lg py-3 px-6"
-            : "bg-transparent py-5 px-4"
+            ? "bg-[#F8FAFC] shadow-[10px_10px_0px_#000]"
+            : "bg-[#38BDF8] shadow-[8px_8px_0px_#000]"
         }`}
       >
-        <div className="flex justify-between items-center">
-          {/* Logo Section */}
+        <div className="flex items-center justify-between px-5 md:px-8 py-4">
+          {/* LOGO */}
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="flex items-center gap-2 cursor-pointer"
+            whileHover={{
+              rotate: -3,
+              scale: 1.05,
+            }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => handleNavClick("home")}
+            className="flex items-center gap-3 cursor-pointer"
           >
-            <div className="bg-blue-600 p-1.5 rounded-lg">
+            {/* ICON BOX */}
+            <div className="bg-[#2563EB] border-[3px] border-black p-2 rounded-xl shadow-[4px_4px_0px_#000]">
               <Code2 size={22} className="text-white" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">
-              Mr Baen<span className="text-blue-600">.</span>
-            </span>
+
+            {/* TEXT */}
+            <h1 className="text-xl md:text-2xl font-black text-black uppercase tracking-wide">
+              Mr Baen
+              <span className="text-[#2563EB]">.</span>
+            </h1>
           </motion.div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <button
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex items-center gap-4">
+            {navItems.map((item, index) => (
+              <motion.button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className="relative px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-white transition-colors group"
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{
+                  y: -4,
+                  rotate: index % 2 === 0 ? -2 : 2,
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="relative bg-white border-[3px] border-black px-5 py-2 rounded-xl font-black text-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] transition-all"
               >
                 {item.label}
-                <motion.span
-                  className="absolute inset-0 bg-blue-50 dark:bg-blue-900/20 rounded-xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity"
-                  layoutId="nav-bg"
-                />
-              </button>
+              </motion.button>
             ))}
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className="md:hidden p-2 text-slate-800 dark:text-white"
+          {/* MOBILE BUTTON */}
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="md:hidden bg-white border-[3px] border-black p-2 rounded-xl shadow-[4px_4px_0px_#000]"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+            {isOpen ? (
+              <X size={24} className="text-black" />
+            ) : (
+              <Menu size={24} className="text-black" />
+            )}
+          </motion.button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
+              initial={{
+                opacity: 0,
+                height: 0,
+              }}
+              animate={{
+                opacity: 1,
+                height: "auto",
+              }}
+              exit={{
+                opacity: 0,
+                height: 0,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
               className="md:hidden overflow-hidden"
             >
-              <div className="flex flex-col gap-2 pt-4 pb-2 border-t border-slate-200 dark:border-slate-800 mt-4">
-                {navItems.map((item) => (
-                  <button
+              <div className="px-5 pb-5 flex flex-col gap-4">
+                {navItems.map((item, index) => (
+                  <motion.button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
-                    className="flex w-full items-center py-3 px-4 text-lg font-semibold text-slate-700 dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-xl transition-all"
+                    initial={{
+                      x: -40,
+                      opacity: 0,
+                    }}
+                    animate={{
+                      x: 0,
+                      opacity: 1,
+                    }}
+                    transition={{
+                      delay: index * 0.08,
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="bg-white border-[3px] border-black rounded-xl py-3 font-black text-black shadow-[4px_4px_0px_#000]"
                   >
                     {item.label}
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
