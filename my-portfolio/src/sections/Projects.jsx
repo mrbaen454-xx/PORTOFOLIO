@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import bkaAcces from "../assets/bkaAcces.png";
 import pemilihanOsis from "../assets/pemilihanOsis.png";
 import baenGame from "../assets/baenGame.png";
+import himami from "../assets/himami.jpeg";
 
 import {
   Eye,
@@ -63,9 +64,20 @@ const Projects = () => {
       githubUrl: "https://github.com/mrbaen454-xx/Baen-Game.git",
       color: "bg-[#2563EB]",
     },
+    {
+      id: 4,
+      title: "HIMAMI",
+      category: "react",
+      description:
+        "HIMAMI is the official website of the Informatics Management Student Association, serving as a central hub for organizational information, activities, division structure, gallery, and contact details.",
+      image: himami,
+      tech: ["React", "JavaScript"],
+      githubUrl: "https://github.com/mrbaen454-xx/HIMAMI.git",
+      color: "bg-[#2563EB]",
+    },
   ];
 
-  const filters = ["all", "fullstack", "java","reactc","html"];
+  const filters = ["all", "fullstack", "java","react","html"];
 
   const filteredProjects =
     activeFilter === "all"
