@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin, Sparkles, ArrowUpRight } from "lucide-react";
 const Contact = () => {
   const contactInfo = [
     {
-      icon: <Mail size={24} />,
+      icon: <Mail size={20} />,
       title: "Email",
       value: "msaroni454@gmail.com",
       link: "mailto:msaroni454@gmail.com",
@@ -12,7 +12,7 @@ const Contact = () => {
     },
 
     {
-      icon: <Phone size={24} />,
+      icon: <Phone size={20} />,
       title: "Phone",
       value: "+62 888 2111 780",
       link: "tel:+628882111780",
@@ -20,7 +20,7 @@ const Contact = () => {
     },
 
     {
-      icon: <MapPin size={24} />,
+      icon: <MapPin size={20} />,
       title: "Location",
       value: "Bandung, Indonesia",
       link: "https://maps.app.goo.gl/HG7fb8YqkWNfe24x9",
@@ -41,8 +41,8 @@ const Contact = () => {
           viewBox="0 0 24 24"
           strokeLinecap="round"
           strokeLinejoin="round"
-          height="22"
-          width="22"
+          height="20"
+          width="20"
         >
           <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
         </svg>
@@ -61,8 +61,8 @@ const Contact = () => {
           viewBox="0 0 24 24"
           strokeLinecap="round"
           strokeLinejoin="round"
-          height="22"
-          width="22"
+          height="20"
+          width="20"
         >
           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
           <rect x="2" y="9" width="4" height="12"></rect>
@@ -83,8 +83,8 @@ const Contact = () => {
           viewBox="0 0 24 24"
           strokeLinecap="round"
           strokeLinejoin="round"
-          height="22"
-          width="22"
+          height="20"
+          width="20"
         >
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -97,7 +97,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative py-24 px-4 md:px-6 bg-[#0F172A] overflow-hidden"
+      className="relative py-20 md:py-24 px-4 md:px-6 bg-[#0F172A] overflow-hidden"
     >
       {/* BACKGROUND SHAPES */}
       <motion.div
@@ -109,7 +109,7 @@ const Contact = () => {
           duration: 7,
           repeat: Infinity,
         }}
-        className="absolute top-16 left-10 w-24 h-24 bg-[#38BDF8] border-[4px] border-black rounded-3xl opacity-20"
+        className="absolute top-16 left-10 w-20 h-20 md:w-24 md:h-24 bg-[#38BDF8] border-[4px] border-black rounded-3xl opacity-20"
       />
 
       <motion.div
@@ -121,7 +121,7 @@ const Contact = () => {
           duration: 6,
           repeat: Infinity,
         }}
-        className="absolute bottom-10 right-10 w-20 h-20 bg-yellow-300 border-[4px] border-black rounded-full opacity-20"
+        className="absolute bottom-10 right-10 w-16 h-16 md:w-20 md:h-20 bg-yellow-300 border-[4px] border-black rounded-full opacity-20"
       />
 
       <div className="max-w-6xl mx-auto">
@@ -143,14 +143,14 @@ const Contact = () => {
             type: "spring",
             stiffness: 100,
           }}
-          className="bg-[#F8FAFC] border-[4px] border-black rounded-[30px] p-6 md:p-10 shadow-[10px_10px_0px_#000]"
+          className="bg-[#F8FAFC] border-[4px] border-black rounded-[24px] md:rounded-[30px] p-5 md:p-10 shadow-[8px_8px_0px_#000]"
         >
           {/* HEADER */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-12 md:mb-14">
             <motion.div
               whileHover={{
                 rotate: -3,
-                scale: 1.05,
+                scale: 1.02,
               }}
               className="inline-flex items-center gap-2 bg-[#38BDF8] border-[3px] border-black px-4 py-2 rounded-full shadow-[4px_4px_0px_#000] mb-5"
             >
@@ -166,7 +166,7 @@ const Contact = () => {
                 <Sparkles size={16} />
               </motion.div>
 
-              <span className="font-black text-xs uppercase tracking-widest">
+              <span className="font-black text-[10px] md:text-xs uppercase tracking-widest">
                 Contact Me
               </span>
             </motion.div>
@@ -182,7 +182,7 @@ const Contact = () => {
           </div>
 
           {/* CONTACT CARDS */}
-          <div className="grid md:grid-cols-3 gap-6 mb-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12">
             {contactInfo.map((info, index) => (
               <motion.a
                 key={index}
@@ -205,13 +205,13 @@ const Contact = () => {
                   stiffness: 120,
                 }}
                 whileHover={{
-                  y: -10,
+                  y: -6,
                   rotate: index % 2 === 0 ? -2 : 2,
-                  scale: 1.03,
+                  scale: 1.01,
                 }}
-                className={`${info.color} border-[4px] border-black rounded-[28px] p-4 shadow-[8px_8px_0px_#000]`}
+                className={`${info.color} border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[28px] p-3 md:p-4 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000] overflow-hidden`}
               >
-                <div className="bg-white border-[3px] border-black rounded-2xl p-6 h-full">
+                <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-6 h-full">
                   {/* ICON */}
                   <motion.div
                     animate={{
@@ -222,24 +222,24 @@ const Contact = () => {
                       repeat: Infinity,
                       delay: index * 0.2,
                     }}
-                    className="w-16 h-16 bg-[#0F172A] text-white border-[3px] border-black rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_#000] mb-5"
+                    className="w-12 h-12 md:w-16 md:h-16 bg-[#0F172A] text-white border-[3px] border-black rounded-xl md:rounded-2xl flex items-center justify-center shadow-[3px_3px_0px_#000] md:shadow-[4px_4px_0px_#000] mb-4"
                   >
                     {info.icon}
                   </motion.div>
 
                   {/* TEXT */}
-                  <p className="text-[11px] font-black uppercase tracking-widest text-[#2563EB] mb-2">
+                  <p className="text-[10px] md:text-[11px] font-black uppercase tracking-widest text-[#2563EB] mb-2">
                     {info.title}
                   </p>
 
-                  <h3 className="text-xl font-black text-black leading-snug mb-4">
+                  <h3 className="text-base md:text-xl font-black text-black leading-snug mb-4 break-words">
                     {info.value}
                   </h3>
 
                   {/* LINK */}
-                  <div className="flex items-center gap-2 text-black font-black text-sm">
+                  <div className="flex items-center gap-2 text-black font-black text-xs md:text-sm">
                     Open
-                    <ArrowUpRight size={16} />
+                    <ArrowUpRight size={14} />
                   </div>
                 </div>
               </motion.a>
@@ -247,9 +247,9 @@ const Contact = () => {
           </div>
 
           {/* SOCIAL SECTION */}
-          <div className="border-t-[4px] border-black pt-10">
+          <div className="border-t-[4px] border-black pt-8 md:pt-10">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-black text-black mb-3">
+              <h3 className="text-xl md:text-2xl font-black text-black mb-3">
                 Social Media
               </h3>
 
@@ -259,7 +259,7 @@ const Contact = () => {
             </div>
 
             {/* SOCIAL BUTTONS */}
-            <div className="flex flex-wrap justify-center gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap justify-center gap-4">
               {socials.map((social, index) => (
                 <motion.a
                   key={index}
@@ -278,16 +278,16 @@ const Contact = () => {
                     delay: index * 0.1,
                   }}
                   whileHover={{
-                    y: -8,
-                    rotate: index % 2 === 0 ? -4 : 4,
-                    scale: 1.05,
+                    y: -5,
+                    rotate: index % 2 === 0 ? -3 : 3,
+                    scale: 1.02,
                   }}
                   whileTap={{
                     scale: 0.95,
                   }}
-                  className={`${social.color} border-[4px] border-black rounded-[24px] p-3 shadow-[6px_6px_0px_#000]`}
+                  className={`${social.color} w-full sm:w-auto border-[3px] md:border-[4px] border-black rounded-[20px] md:rounded-[24px] p-2 md:p-3 shadow-[4px_4px_0px_#000] md:shadow-[6px_6px_0px_#000]`}
                 >
-                  <div className="bg-white border-[3px] border-black rounded-2xl px-6 py-4 flex items-center gap-4">
+                  <div className="bg-white border-[3px] border-black rounded-2xl px-4 md:px-6 py-3 md:py-4 flex items-center gap-3 md:gap-4">
                     {/* ICON */}
                     <motion.div
                       animate={{
@@ -298,18 +298,18 @@ const Contact = () => {
                         repeat: Infinity,
                         delay: index * 0.3,
                       }}
-                      className="bg-[#0F172A] text-white border-[3px] border-black p-3 rounded-xl shadow-[3px_3px_0px_#000]"
+                      className="bg-[#0F172A] text-white border-[3px] border-black p-2 md:p-3 rounded-xl shadow-[3px_3px_0px_#000]"
                     >
                       {social.icon}
                     </motion.div>
 
                     {/* TEXT */}
                     <div>
-                      <p className="font-black text-black text-lg">
+                      <p className="font-black text-black text-base md:text-lg">
                         {social.name}
                       </p>
 
-                      <p className="text-black text-xs font-medium">
+                      <p className="text-black text-[11px] md:text-xs font-medium">
                         Visit Profile
                       </p>
                     </div>

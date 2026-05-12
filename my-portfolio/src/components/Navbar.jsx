@@ -23,43 +23,49 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // CLOSE MENU WHEN RESIZE DESKTOP
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const handleNavClick = (id) => {
     setIsOpen(false);
 
     const element = document.getElementById(id);
 
     if (element) {
-      const offset = 80;
-
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
+      element.scrollIntoView({
         behavior: "smooth",
+        block: "start",
       });
     }
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[1000] px-4 py-5">
+    <header className="fixed top-0 left-0 w-full z-[9999] px-4 py-5">
       <motion.nav
-        initial={{ y: -120, opacity: 0, rotate: -2 }}
-        animate={{ y: 0, opacity: 1, rotate: 0 }}
+        initial={{ y: -120, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
         transition={{
-          duration: 0.8,
+          duration: 0.7,
           type: "spring",
           stiffness: 120,
         }}
-        className={`max-w-6xl mx-auto border-[4px] border-black rounded-[24px] transition-all duration-300 ${
+        className={`max-w-6xl mx-auto border-[4px] border-black rounded-[24px] transition-all duration-300 relative ${
           scrolled
             ? "bg-[#F8FAFC] shadow-[10px_10px_0px_#000]"
             : "bg-[#38BDF8] shadow-[8px_8px_0px_#000]"
         }`}
       >
+        {/* TOP NAV */}
         <div className="flex items-center justify-between px-5 md:px-8 py-4">
           {/* LOGO */}
           <motion.div
@@ -71,14 +77,12 @@ const Navbar = () => {
             onClick={() => handleNavClick("home")}
             className="flex items-center gap-3 cursor-pointer"
           >
-            {/* ICON BOX */}
             <div className="bg-[#2563EB] border-[3px] border-black p-2 rounded-xl shadow-[4px_4px_0px_#000]">
               <Code2 size={22} className="text-white" />
             </div>
 
-            {/* TEXT */}
             <h1 className="text-xl md:text-2xl font-black text-black uppercase tracking-wide">
-              Mr Baen
+              Baen
               <span className="text-[#2563EB]">.</span>
             </h1>
           </motion.div>
@@ -97,7 +101,7 @@ const Navbar = () => {
                   rotate: index % 2 === 0 ? -2 : 2,
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative bg-white border-[3px] border-black px-5 py-2 rounded-xl font-black text-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] transition-all"
+                className="bg-white border-[3px] border-black px-5 py-2 rounded-xl font-black text-black shadow-[4px_4px_0px_#000] hover:shadow-[2px_2px_0px_#000] transition-all"
               >
                 {item.label}
               </motion.button>
@@ -107,7 +111,7 @@ const Navbar = () => {
           {/* MOBILE BUTTON */}
           <motion.button
             whileTap={{ scale: 0.9 }}
-            className="md:hidden bg-white border-[3px] border-black p-2 rounded-xl shadow-[4px_4px_0px_#000]"
+            className="md:hidden bg-white border-[3px] border-black p-2 rounded-xl shadow-[4px_4px_0px_#000] z-[10000]"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? (
@@ -124,28 +128,28 @@ const Navbar = () => {
             <motion.div
               initial={{
                 opacity: 0,
-                height: 0,
+                y: -20,
               }}
               animate={{
                 opacity: 1,
-                height: "auto",
+                y: 0,
               }}
               exit={{
                 opacity: 0,
-                height: 0,
+                y: -20,
               }}
               transition={{
-                duration: 0.3,
+                duration: 0.25,
               }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden absolute top-full left-0 w-full mt-3 px-4 z-[9999]"
             >
-              <div className="px-5 pb-5 flex flex-col gap-4">
+              <div className="bg-[#38BDF8] border-[4px] border-black rounded-[24px] p-5 flex flex-col gap-4 shadow-[8px_8px_0px_#000]">
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.id}
                     onClick={() => handleNavClick(item.id)}
                     initial={{
-                      x: -40,
+                      x: -30,
                       opacity: 0,
                     }}
                     animate={{
@@ -156,7 +160,7 @@ const Navbar = () => {
                       delay: index * 0.08,
                     }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white border-[3px] border-black rounded-xl py-3 font-black text-black shadow-[4px_4px_0px_#000]"
+                    className="w-full bg-white border-[3px] border-black rounded-xl py-3 font-black text-black shadow-[4px_4px_0px_#000] active:shadow-[2px_2px_0px_#000]"
                   >
                     {item.label}
                   </motion.button>

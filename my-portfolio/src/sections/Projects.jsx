@@ -309,9 +309,10 @@ const Projects = () => {
       </div>
 
       {/* MODAL */}
+      {/* MODAL */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[20000] flex items-center justify-center p-4">
             {/* BACKDROP */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -326,22 +327,37 @@ const Projects = () => {
               initial={{
                 opacity: 0,
                 scale: 0.7,
-                rotate: 5,
+                y: 40,
               }}
               animate={{
                 opacity: 1,
                 scale: 1,
-                rotate: 0,
+                y: 0,
               }}
               exit={{
                 opacity: 0,
                 scale: 0.7,
+                y: 40,
               }}
               transition={{
                 type: "spring",
                 stiffness: 120,
               }}
-              className="relative max-w-4xl w-full bg-[#38BDF8] border-[4px] border-black rounded-[30px] p-5 shadow-[10px_10px_0px_#000] z-10"
+              className="
+          relative 
+          w-full 
+          max-w-3xl 
+          max-h-[90vh]
+          overflow-y-auto
+          bg-[#38BDF8] 
+          border-[4px] 
+          border-black 
+          rounded-[24px] 
+          p-3 md:p-5
+          shadow-[8px_8px_0px_#000] 
+          z-10
+          mt-16 md:mt-0
+        "
             >
               <div className="bg-white border-[3px] border-black rounded-2xl overflow-hidden">
                 {/* CLOSE BUTTON */}
@@ -350,8 +366,25 @@ const Projects = () => {
                     rotate: 90,
                     scale: 1.1,
                   }}
+                  whileTap={{
+                    scale: 0.9,
+                  }}
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-8 right-8 bg-red-500 text-white border-[3px] border-black p-2 rounded-xl shadow-[4px_4px_0px_#000]"
+                  className="
+              absolute 
+              top-5 
+              right-5 
+              md:top-7 
+              md:right-7
+              bg-red-500 
+              text-white 
+              border-[3px] 
+              border-black 
+              p-2 
+              rounded-xl 
+              shadow-[4px_4px_0px_#000]
+              z-20
+            "
                 >
                   <X size={18} />
                 </motion.button>
@@ -360,11 +393,19 @@ const Projects = () => {
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-64 object-cover border-b-[3px] border-black"
+                  className="
+              w-full 
+              h-44 
+              sm:h-56 
+              md:h-72 
+              object-cover 
+              border-b-[3px] 
+              border-black
+            "
                 />
 
                 {/* CONTENT */}
-                <div className="p-6 md:p-8">
+                <div className="p-5 md:p-8">
                   <div className="flex items-center gap-2 mb-4">
                     <Code2 size={18} />
 
@@ -373,11 +414,11 @@ const Projects = () => {
                     </span>
                   </div>
 
-                  <h2 className="text-3xl md:text-4xl font-black text-black mb-4">
+                  <h2 className="text-2xl md:text-4xl font-black text-black mb-4 leading-tight">
                     {selectedProject.title}
                   </h2>
 
-                  <p className="text-black font-medium leading-relaxed mb-6">
+                  <p className="text-black font-medium leading-relaxed mb-6 text-sm md:text-base">
                     {selectedProject.description}
                   </p>
 
@@ -390,7 +431,16 @@ const Projects = () => {
                           y: -3,
                           rotate: i % 2 === 0 ? -3 : 3,
                         }}
-                        className="bg-yellow-300 border-[3px] border-black px-4 py-2 rounded-xl font-black text-sm shadow-[4px_4px_0px_#000]"
+                        className="
+                    bg-yellow-300 
+                    border-[3px] 
+                    border-black 
+                    px-3 py-2 md:px-4 
+                    rounded-xl 
+                    font-black 
+                    text-xs md:text-sm 
+                    shadow-[4px_4px_0px_#000]
+                  "
                       >
                         {tech}
                       </motion.div>
@@ -408,7 +458,26 @@ const Projects = () => {
                     }}
                     href={selectedProject.githubUrl}
                     target="_blank"
-                    className="inline-flex items-center gap-2 bg-[#2563EB] text-white border-[3px] border-black px-6 py-4 rounded-2xl font-black shadow-[5px_5px_0px_#000] hover:shadow-[2px_2px_0px_#000] transition-all"
+                    rel="noreferrer"
+                    className="
+                w-full md:w-fit
+                inline-flex 
+                items-center 
+                justify-center
+                gap-2 
+                bg-[#2563EB] 
+                text-white 
+                border-[3px] 
+                border-black 
+                px-6 
+                py-4 
+                rounded-2xl 
+                font-black 
+                text-sm md:text-base
+                shadow-[5px_5px_0px_#000] 
+                hover:shadow-[2px_2px_0px_#000] 
+                transition-all
+              "
                   >
                     <GitBranch size={18} />
                     VIEW REPOSITORY
