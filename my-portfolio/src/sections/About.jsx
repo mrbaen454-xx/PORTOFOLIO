@@ -4,26 +4,26 @@ import { Globe, Zap, Users, Database, Server, Cpu } from "lucide-react";
 const About = () => {
   const skills = [
     {
-      icon: <Server size={28} />,
+      icon: <Server size={24} />,
       title: "Backend Development",
       description: "Building robust server-side apps using Java & Spring Boot.",
       color: "bg-[#38BDF8]",
     },
     {
-      icon: <Globe size={28} />,
+      icon: <Globe size={24} />,
       title: "REST API Design",
       description: "Crafting secure, scalable, and well-documented endpoints.",
       color: "bg-[#2563EB]",
     },
     {
-      icon: <Database size={28} />,
+      icon: <Database size={24} />,
       title: "DB Management",
       description:
         "Efficiently handling MySQL, PostgreSQL, and data integrity.",
       color: "bg-yellow-300",
     },
     {
-      icon: <Zap size={28} />,
+      icon: <Zap size={24} />,
       title: "Optimization",
       description: "Fine-tuning backend performance for maximum speed.",
       color: "bg-[#60A5FA]",
@@ -46,7 +46,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="relative py-24 px-4 md:px-6 bg-[#0F172A] overflow-hidden"
+      className="relative py-20 md:py-24 px-4 md:px-6 bg-[#0F172A] overflow-hidden"
     >
       {/* BACKGROUND DECORATION */}
       <motion.div
@@ -58,7 +58,7 @@ const About = () => {
           duration: 7,
           repeat: Infinity,
         }}
-        className="absolute top-16 left-10 w-24 h-24 bg-[#38BDF8] border-[4px] border-black rounded-3xl opacity-20"
+        className="absolute top-16 left-5 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-[#38BDF8] border-[4px] border-black rounded-3xl opacity-20"
       />
 
       <motion.div
@@ -70,7 +70,7 @@ const About = () => {
           duration: 6,
           repeat: Infinity,
         }}
-        className="absolute bottom-10 right-10 w-20 h-20 bg-yellow-300 border-[4px] border-black rounded-full opacity-20"
+        className="absolute bottom-10 right-5 md:right-10 w-14 h-14 md:w-20 md:h-20 bg-yellow-300 border-[4px] border-black rounded-full opacity-20"
       />
 
       <div className="max-w-6xl mx-auto">
@@ -84,10 +84,10 @@ const About = () => {
             type: "spring",
             stiffness: 100,
           }}
-          className="bg-[#F8FAFC] border-[4px] border-black rounded-[30px] p-6 md:p-10 shadow-[10px_10px_0px_#000]"
+          className="bg-[#F8FAFC] border-[4px] border-black rounded-[24px] md:rounded-[30px] p-5 md:p-10 shadow-[8px_8px_0px_#000]"
         >
           {/* HEADER */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-10 md:mb-12">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ const About = () => {
             >
               <Cpu size={16} />
 
-              <span className="font-black text-xs uppercase tracking-widest">
+              <span className="font-black text-[10px] md:text-xs uppercase tracking-widest">
                 About Me
               </span>
             </motion.div>
@@ -123,24 +123,24 @@ const About = () => {
           </div>
 
           {/* CONTENT */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-start">
             {/* LEFT SIDE */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="space-y-6"
+              className="space-y-5 md:space-y-6"
             >
               {/* JOURNEY CARD */}
               <motion.div
                 whileHover={{
-                  y: -5,
+                  y: -4,
                   rotate: -1,
                 }}
-                className="bg-[#38BDF8] border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]"
+                className="bg-[#38BDF8] border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000]"
               >
-                <div className="bg-white border-[3px] border-black rounded-2xl p-5 rotate-[-1deg]">
-                  <div className="flex items-center gap-3 mb-4">
+                <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5">
+                  <div className="flex items-start md:items-center gap-3 mb-4">
                     <motion.div
                       animate={{
                         rotate: [0, 10, -10, 0],
@@ -149,12 +149,12 @@ const About = () => {
                         duration: 3,
                         repeat: Infinity,
                       }}
-                      className="bg-[#2563EB] text-white border-[3px] border-black p-3 rounded-xl shadow-[4px_4px_0px_#000]"
+                      className="bg-[#2563EB] text-white border-[3px] border-black p-2 md:p-3 rounded-xl shadow-[3px_3px_0px_#000]"
                     >
-                      <Cpu size={22} />
+                      <Cpu size={20} />
                     </motion.div>
 
-                    <h3 className="text-2xl font-black text-black">
+                    <h3 className="text-xl md:text-2xl font-black text-black break-words">
                       My Journey
                     </h3>
                   </div>
@@ -177,26 +177,26 @@ const About = () => {
               {/* TECH STACK */}
               <motion.div
                 whileHover={{
-                  y: -5,
+                  y: -4,
                   rotate: 1,
                 }}
-                className="bg-yellow-300 border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]"
+                className="bg-yellow-300 border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000]"
               >
-                <div className="bg-white border-[3px] border-black rounded-2xl p-5">
-                  <h4 className="text-2xl font-black text-black mb-5">
+                <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5">
+                  <h4 className="text-xl md:text-2xl font-black text-black mb-5">
                     Tech Stack
                   </h4>
 
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2 md:gap-3">
                     {techStack.map((tech, index) => (
                       <motion.div
                         key={index}
                         whileHover={{
-                          y: -4,
-                          rotate: index % 2 === 0 ? -3 : 3,
-                          scale: 1.05,
+                          y: -3,
+                          rotate: index % 2 === 0 ? -2 : 2,
+                          scale: 1.02,
                         }}
-                        className="bg-[#2563EB] text-white border-[3px] border-black px-4 py-2 rounded-xl font-black text-sm shadow-[4px_4px_0px_#000]"
+                        className="bg-[#2563EB] text-white border-[3px] border-black px-3 py-2 rounded-xl font-black text-xs md:text-sm shadow-[3px_3px_0px_#000]"
                       >
                         {tech}
                       </motion.div>
@@ -207,7 +207,7 @@ const About = () => {
             </motion.div>
 
             {/* RIGHT SIDE */}
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
               {skills.map((skill, index) => (
                 <motion.div
                   key={index}
@@ -227,13 +227,13 @@ const About = () => {
                     stiffness: 120,
                   }}
                   whileHover={{
-                    y: -8,
+                    y: -5,
                     rotate: index % 2 === 0 ? -2 : 2,
-                    scale: 1.03,
+                    scale: 1.01,
                   }}
-                  className={`${skill.color} border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]`}
+                  className={`${skill.color} border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000] overflow-hidden`}
                 >
-                  <div className="bg-white border-[3px] border-black rounded-2xl p-5 h-full">
+                  <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5 h-full">
                     {/* ICON */}
                     <motion.div
                       animate={{
@@ -244,18 +244,18 @@ const About = () => {
                         repeat: Infinity,
                         delay: index * 0.3,
                       }}
-                      className="w-14 h-14 bg-[#0F172A] text-white border-[3px] border-black rounded-2xl flex items-center justify-center shadow-[4px_4px_0px_#000] mb-5"
+                      className="w-12 h-12 md:w-14 md:h-14 bg-[#0F172A] text-white border-[3px] border-black rounded-xl md:rounded-2xl flex items-center justify-center shadow-[3px_3px_0px_#000] mb-4"
                     >
                       {skill.icon}
                     </motion.div>
 
                     {/* TITLE */}
-                    <h4 className="text-xl font-black text-black mb-3">
+                    <h4 className="text-lg md:text-xl font-black text-black mb-3 break-words">
                       {skill.title}
                     </h4>
 
                     {/* DESCRIPTION */}
-                    <p className="text-black text-sm leading-relaxed font-medium">
+                    <p className="text-black text-sm leading-relaxed font-medium break-words">
                       {skill.description}
                     </p>
                   </div>
@@ -276,12 +276,12 @@ const About = () => {
                   delay: 0.5,
                 }}
                 whileHover={{
-                  y: -6,
+                  y: -5,
                   rotate: -1,
                 }}
-                className="sm:col-span-2 bg-[#2563EB] border-[4px] border-black rounded-[26px] p-5 shadow-[8px_8px_0px_#000]"
+                className="sm:col-span-2 bg-[#2563EB] border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000]"
               >
-                <div className="bg-white border-[3px] border-black rounded-2xl p-5 flex items-start gap-4">
+                <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5 flex flex-col sm:flex-row items-start gap-4">
                   <motion.div
                     animate={{
                       rotate: [0, 10, -10, 0],
@@ -290,17 +290,17 @@ const About = () => {
                       duration: 3,
                       repeat: Infinity,
                     }}
-                    className="bg-yellow-300 border-[3px] border-black p-3 rounded-2xl shadow-[4px_4px_0px_#000]"
+                    className="bg-yellow-300 border-[3px] border-black p-3 rounded-2xl shadow-[3px_3px_0px_#000]"
                   >
-                    <Users size={26} />
+                    <Users size={22} />
                   </motion.div>
 
                   <div>
-                    <h4 className="text-xl font-black text-black mb-2">
+                    <h4 className="text-lg md:text-xl font-black text-black mb-2">
                       Agile & Team Player
                     </h4>
 
-                    <p className="text-black font-medium text-sm leading-relaxed">
+                    <p className="text-black font-medium text-sm leading-relaxed break-words">
                       Experienced in Git, collaborative workflows, and teamwork
                       to build high-quality software solutions.
                     </p>
