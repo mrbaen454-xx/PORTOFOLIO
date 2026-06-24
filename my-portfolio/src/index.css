@@ -2,10 +2,205 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==================== BASE STYLES ==================== */
 :root {
-  scroll-behavior: smooth; /* Biar kalau klik menu navbar, scrollnya halus */
+  scroll-behavior: smooth;
+  --bg-primary: #020817;
+  --bg-secondary: #0F172A;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --accent-blue: #3B82F6;
+  --accent-violet: #8B5CF6;
+  --accent-cyan: #06B6D4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900; /* Warna dasar light mode */
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: #020817;
+  color: #f1f5f9;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3B82F6, #8B5CF6);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #60A5FA, #A78BFA);
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+@layer components {
+  /* Glass card */
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] rounded-2xl;
+  }
+
+  /* Glass card hover */
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:border-white/[0.15];
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent;
+  }
+
+  /* Gradient text blue-violet */
+  .gradient-text-bv {
+    @apply bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  /* Neon button */
+  .btn-primary {
+    @apply bg-gradient-to-r from-blue-600 to-violet-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:from-blue-500 hover:to-violet-500;
+  }
+
+  /* Outline button */
+  .btn-outline {
+    @apply border border-white/20 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:bg-white/10 hover:border-white/40 hover:-translate-y-0.5;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section label */
+  .section-label {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full;
+  }
+
+  /* Skill badge */
+  .skill-badge {
+    @apply text-xs font-medium px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300 transition-all duration-200 hover:bg-blue-500/20 hover:border-blue-500/30 hover:text-blue-300 cursor-default;
+  }
+
+  /* Glow ring */
+  .glow-ring {
+    @apply ring-2 ring-blue-500/30 ring-offset-2 ring-offset-slate-900;
+  }
+}
+
+/* ==================== GRID BACKGROUND ==================== */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ==================== BLOB DECORATIONS ==================== */
+.blob-1 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: blob 7s infinite;
+}
+
+.blob-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: blob 7s infinite 2s;
+}
+
+.blob-3 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: blob 7s infinite 4s;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 0 80px rgba(139, 92, 246, 0.2); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== SHINE EFFECT ==================== */
+.shine-text {
+  background: linear-gradient(
+    90deg,
+    #3B82F6 0%,
+    #8B5CF6 25%,
+    #06B6D4 50%,
+    #8B5CF6 75%,
+    #3B82F6 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ==================== TYPING CURSOR ==================== */
+.typing-cursor::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  color: #3B82F6;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ==================== SELECTION ==================== */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: white;
 }

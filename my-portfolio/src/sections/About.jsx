@@ -1,315 +1,204 @@
 import { motion } from "framer-motion";
-import { Globe, Zap, Users, Database, Server, Cpu } from "lucide-react";
+import { User, Code2, Database, Zap, Users, BookOpen, MapPin, GraduationCap } from "lucide-react";
+import myphoto1 from "../assets/myphoto1.jpeg";
 
 const About = () => {
-  const skills = [
+  const stats = [
+    { value: "4+", label: "Projects Built", icon: <Code2 size={16} /> },
+    { value: "2+", label: "Years Learning", icon: <BookOpen size={16} /> },
+    { value: "10+", label: "Technologies", icon: <Zap size={16} /> },
+    { value: "100%", label: "Commitment", icon: <Users size={16} /> },
+  ];
+
+  const highlights = [
     {
-      icon: <Server size={24} />,
-      title: "Backend Development",
-      description: "Building robust server-side apps using Java & Spring Boot.",
-      color: "bg-[#38BDF8]",
+      icon: <GraduationCap size={20} />,
+      title: "Education",
+      desc: "D3 Manajemen Informatika – Universitas Nasional PASIM, Bandung (2024 – present)",
+      color: "text-blue-400",
+      bg: "bg-blue-500/10 border-blue-500/20",
     },
     {
-      icon: <Globe size={24} />,
-      title: "REST API Design",
-      description: "Crafting secure, scalable, and well-documented endpoints.",
-      color: "bg-[#2563EB]",
+      icon: <Code2 size={20} />,
+      title: "Focus",
+      desc: "Java Backend Development with Spring Boot, REST API, JWT Security, and Microservices architecture",
+      color: "text-violet-400",
+      bg: "bg-violet-500/10 border-violet-500/20",
     },
     {
-      icon: <Database size={24} />,
-      title: "DB Management",
-      description:
-        "Efficiently handling MySQL, PostgreSQL, and data integrity.",
-      color: "bg-yellow-300",
+      icon: <Database size={20} />,
+      title: "Database",
+      desc: "Efficient data management with MySQL and PostgreSQL. Strong understanding of relational DB design",
+      color: "text-cyan-400",
+      bg: "bg-cyan-500/10 border-cyan-500/20",
     },
     {
-      icon: <Zap size={24} />,
-      title: "Optimization",
-      description: "Fine-tuning backend performance for maximum speed.",
-      color: "bg-[#60A5FA]",
+      icon: <Users size={20} />,
+      title: "Collaboration",
+      desc: "Experienced with Git, GitHub workflows, and team collaboration to build high-quality software",
+      color: "text-emerald-400",
+      bg: "bg-emerald-500/10 border-emerald-500/20",
     },
   ];
 
-  const techStack = [
-    "Java",
-    "Spring Boot",
-    "React",
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "MySQL",
-    "PostgreSQL",
-    "Git",
-    "Hibernate",
-  ];
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
-    <section
-      id="about"
-      className="relative py-20 md:py-24 px-4 md:px-6 bg-[#0F172A] overflow-hidden"
-    >
-      {/* BACKGROUND DECORATION */}
-      <motion.div
-        animate={{
-          rotate: [0, 15, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-        }}
-        className="absolute top-16 left-5 md:left-10 w-16 h-16 md:w-24 md:h-24 bg-[#38BDF8] border-[4px] border-black rounded-3xl opacity-20"
-      />
+    <section id="about" className="relative py-24 bg-[#020817] overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="blob-2 top-1/4 right-0 opacity-30" />
+      <div className="blob-1 bottom-0 left-0 opacity-25" style={{ animationDelay: "3s" }} />
 
-      <motion.div
-        animate={{
-          rotate: [0, -10, 0],
-          y: [0, 20, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-        }}
-        className="absolute bottom-10 right-5 md:right-10 w-14 h-14 md:w-20 md:h-20 bg-yellow-300 border-[4px] border-black rounded-full opacity-20"
-      />
-
-      <div className="max-w-6xl mx-auto">
-        {/* MAIN CONTAINER */}
+      <div className="section-container relative z-10">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            type: "spring",
-            stiffness: 100,
-          }}
-          className="bg-[#F8FAFC] border-[4px] border-black rounded-[24px] md:rounded-[30px] p-5 md:p-10 shadow-[8px_8px_0px_#000]"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          {/* HEADER */}
-          <div className="text-center mb-10 md:mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 bg-[#38BDF8] border-[3px] border-black px-4 py-2 rounded-full shadow-[4px_4px_0px_#000] mb-5"
-            >
-              <Cpu size={16} />
+          <span className="section-label mb-4 inline-flex">
+            <User size={12} />
+            About Me
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-4">
+            My <span className="gradient-text">Journey</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Passionate developer focused on building reliable, scalable backend systems and elegant web interfaces.
+          </p>
+        </motion.div>
 
-              <span className="font-black text-[10px] md:text-xs uppercase tracking-widest">
-                About Me
-              </span>
-            </motion.div>
+        {/* Main Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-            <motion.h2
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-3xl md:text-5xl font-black text-black mb-5"
-            >
-              My <span className="text-[#2563EB]">Journey</span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="max-w-2xl mx-auto text-black text-sm md:text-base font-medium leading-relaxed"
-            >
-              I am a Java Backend Developer passionate about building
-              high-performance systems with clean architecture, scalability, and
-              maintainable code.
-            </motion.p>
-          </div>
-
-          {/* CONTENT */}
-          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-start">
-            {/* LEFT SIDE */}
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              className="space-y-5 md:space-y-6"
-            >
-              {/* JOURNEY CARD */}
-              <motion.div
-                whileHover={{
-                  y: -4,
-                  rotate: -1,
-                }}
-                className="bg-[#38BDF8] border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000]"
-              >
-                <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5">
-                  <div className="flex items-start md:items-center gap-3 mb-4">
-                    <motion.div
-                      animate={{
-                        rotate: [0, 10, -10, 0],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                      }}
-                      className="bg-[#2563EB] text-white border-[3px] border-black p-2 md:p-3 rounded-xl shadow-[3px_3px_0px_#000]"
-                    >
-                      <Cpu size={20} />
-                    </motion.div>
-
-                    <h3 className="text-xl md:text-2xl font-black text-black break-words">
-                      My Journey
-                    </h3>
+          {/* LEFT: Text + Stats */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            {/* Photo + Identity Card */}
+            <div className="glass-card p-6 mb-6">
+              <div className="flex items-start gap-5">
+                {/* Photo */}
+                <div className="relative flex-shrink-0">
+                  <div className="w-20 h-20 rounded-xl overflow-hidden border border-white/10">
+                    <img
+                      src={myphoto1}
+                      alt="M. Saroni"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-
-                  <div className="space-y-4 text-black font-medium leading-relaxed text-sm md:text-[15px]">
-                    <p>
-                      My programming journey began in 2024 when I started
-                      studying at Universitas Nasional PASIM through the PUB
-                      scholarship program.
-                    </p>
-
-                    <p>
-                      I focus on creating systems that are not just functional,
-                      but also reliable, scalable, and easy to maintain.
-                    </p>
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-slate-900 flex items-center justify-center">
+                    <div className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse" />
                   </div>
                 </div>
-              </motion.div>
 
-              {/* TECH STACK */}
-              <motion.div
-                whileHover={{
-                  y: -4,
-                  rotate: 1,
-                }}
-                className="bg-yellow-300 border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000]"
-              >
-                <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5">
-                  <h4 className="text-xl md:text-2xl font-black text-black mb-5">
-                    Tech Stack
-                  </h4>
-
-                  <div className="flex flex-wrap gap-2 md:gap-3">
-                    {techStack.map((tech, index) => (
-                      <motion.div
-                        key={index}
-                        whileHover={{
-                          y: -3,
-                          rotate: index % 2 === 0 ? -2 : 2,
-                          scale: 1.02,
-                        }}
-                        className="bg-[#2563EB] text-white border-[3px] border-black px-3 py-2 rounded-xl font-black text-xs md:text-sm shadow-[3px_3px_0px_#000]"
-                      >
-                        {tech}
-                      </motion.div>
-                    ))}
+                {/* Identity */}
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">M. Saroni (Baen)</h3>
+                  <p className="text-sm text-blue-400 font-medium mb-2">Java Backend Developer</p>
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
+                    <MapPin size={11} />
+                    <span>Bandung, Indonesia</span>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
 
-            {/* RIGHT SIDE */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-              {skills.map((skill, index) => (
+              {/* Bio */}
+              <div className="mt-5 pt-5 border-t border-white/[0.06]">
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Perjalanan saya di dunia programming dimulai pada tahun <span className="text-slate-300 font-medium">2024</span>{" "}
+                  melalui beasiswa PUB di Universitas Nasional PASIM. Saya fokus pada
+                  Java backend development dengan passion pada clean architecture, scalability,
+                  dan maintainable code. Saat ini aktif mengembangkan skill di bidang{" "}
+                  <span className="text-blue-400 font-medium">Spring Boot</span>,{" "}
+                  <span className="text-violet-400 font-medium">React</span>, dan{" "}
+                  <span className="text-cyan-400 font-medium">database management</span>.
+                </p>
+              </div>
+            </div>
+
+            {/* Stats Grid */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-3"
+            >
+              {stats.map((stat, i) => (
                 <motion.div
-                  key={index}
-                  initial={{
-                    opacity: 0,
-                    y: 50,
-                    rotate: 5,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                    rotate: 0,
-                  }}
-                  transition={{
-                    delay: index * 0.15,
-                    type: "spring",
-                    stiffness: 120,
-                  }}
-                  whileHover={{
-                    y: -5,
-                    rotate: index % 2 === 0 ? -2 : 2,
-                    scale: 1.01,
-                  }}
-                  className={`${skill.color} border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000] overflow-hidden`}
+                  key={i}
+                  variants={itemVariants}
+                  whileHover={{ y: -3, scale: 1.02 }}
+                  className="glass-card p-4 text-center hover:bg-white/[0.07] transition-all duration-300 border-white/[0.08] hover:border-white/[0.15]"
                 >
-                  <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5 h-full">
-                    {/* ICON */}
-                    <motion.div
-                      animate={{
-                        y: [0, -5, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.3,
-                      }}
-                      className="w-12 h-12 md:w-14 md:h-14 bg-[#0F172A] text-white border-[3px] border-black rounded-xl md:rounded-2xl flex items-center justify-center shadow-[3px_3px_0px_#000] mb-4"
-                    >
-                      {skill.icon}
-                    </motion.div>
-
-                    {/* TITLE */}
-                    <h4 className="text-lg md:text-xl font-black text-black mb-3 break-words">
-                      {skill.title}
-                    </h4>
-
-                    {/* DESCRIPTION */}
-                    <p className="text-black text-sm leading-relaxed font-medium break-words">
-                      {skill.description}
-                    </p>
+                  <div className="flex items-center justify-center gap-1.5 text-blue-400 mb-2">
+                    {stat.icon}
                   </div>
+                  <p className="text-2xl font-bold gradient-text-bv mb-1">{stat.value}</p>
+                  <p className="text-xs text-slate-500 font-medium">{stat.label}</p>
                 </motion.div>
               ))}
+            </motion.div>
+          </motion.div>
 
-              {/* TEAM CARD */}
+          {/* RIGHT: Highlight Cards */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            {highlights.map((item, i) => (
               <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 0.5,
-                }}
-                whileHover={{
-                  y: -5,
-                  rotate: -1,
-                }}
-                className="sm:col-span-2 bg-[#2563EB] border-[3px] md:border-[4px] border-black rounded-[22px] md:rounded-[26px] p-3 md:p-5 shadow-[5px_5px_0px_#000] md:shadow-[8px_8px_0px_#000]"
+                key={i}
+                variants={itemVariants}
+                whileHover={{ x: 4, scale: 1.01 }}
+                className={`flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r ${item.bg} border backdrop-blur-sm transition-all duration-300 cursor-default`}
               >
-                <div className="bg-white border-[3px] border-black rounded-2xl p-4 md:p-5 flex flex-col sm:flex-row items-start gap-4">
-                  <motion.div
-                    animate={{
-                      rotate: [0, 10, -10, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                    }}
-                    className="bg-yellow-300 border-[3px] border-black p-3 rounded-2xl shadow-[3px_3px_0px_#000]"
-                  >
-                    <Users size={22} />
-                  </motion.div>
-
-                  <div>
-                    <h4 className="text-lg md:text-xl font-black text-black mb-2">
-                      Agile & Team Player
-                    </h4>
-
-                    <p className="text-black font-medium text-sm leading-relaxed break-words">
-                      Experienced in Git, collaborative workflows, and teamwork
-                      to build high-quality software solutions.
-                    </p>
-                  </div>
+                <div className={`w-10 h-10 rounded-lg ${item.bg} border flex items-center justify-center flex-shrink-0 ${item.color}`}>
+                  {item.icon}
+                </div>
+                <div>
+                  <h4 className={`text-sm font-semibold ${item.color} mb-1`}>{item.title}</h4>
+                  <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
-            </div>
-          </div>
-        </motion.div>
+            ))}
+
+            {/* Quote card */}
+            <motion.div
+              variants={itemVariants}
+              className="glass-card p-5 mt-2"
+            >
+              <div className="flex gap-3 items-start">
+                <span className="text-4xl text-blue-500/40 font-serif leading-none mt-1">&ldquo;</span>
+                <div>
+                  <p className="text-sm text-slate-300 italic leading-relaxed">
+                    I focus on creating systems that are not just functional, but also reliable,
+                    scalable, and easy to maintain. Every line of code matters.
+                  </p>
+                  <p className="text-xs text-slate-500 mt-3 font-medium">— M. Saroni</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

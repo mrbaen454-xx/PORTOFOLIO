@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Download, Sparkles } from "lucide-react";
-
+import { ArrowDown, ExternalLink, Sparkles } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 import myphoto from "../assets/myphoto.png";
 
 const Hero = () => {
@@ -10,14 +10,23 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const roles = [
-    "Full Stack Developer",
     "Java Backend Developer",
+    "Spring Boot Engineer",
+    "Full Stack Developer",
     "React Developer",
+  ];
+
+  const techBadges = [
+    { name: "Java", color: "from-orange-500/20 to-orange-600/10 border-orange-500/25 text-orange-300" },
+    { name: "Spring Boot", color: "from-green-500/20 to-green-600/10 border-green-500/25 text-green-300" },
+    { name: "React", color: "from-cyan-500/20 to-cyan-600/10 border-cyan-500/25 text-cyan-300" },
+    { name: "MySQL", color: "from-blue-500/20 to-blue-600/10 border-blue-500/25 text-blue-300" },
+    { name: "PostgreSQL", color: "from-indigo-500/20 to-indigo-600/10 border-indigo-500/25 text-indigo-300" },
+    { name: "Tailwind", color: "from-teal-500/20 to-teal-600/10 border-teal-500/25 text-teal-300" },
   ];
 
   useEffect(() => {
     const currentRole = roles[textIndex];
-
     const timeout = setTimeout(
       () => {
         if (!isDeleting && displayText.length < currentRole.length) {
@@ -25,274 +34,230 @@ const Hero = () => {
         } else if (isDeleting && displayText.length > 0) {
           setDisplayText(currentRole.substring(0, displayText.length - 1));
         } else if (!isDeleting && displayText.length === currentRole.length) {
-          setTimeout(() => setIsDeleting(true), 1500);
+          setTimeout(() => setIsDeleting(true), 2000);
         } else if (isDeleting && displayText.length === 0) {
           setIsDeleting(false);
           setTextIndex((prev) => (prev + 1) % roles.length);
         }
       },
-      isDeleting ? 40 : 80,
+      isDeleting ? 35 : 70,
     );
-
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, textIndex]);
+
+  const scrollToProjects = () => {
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrollToContact = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
 
   return (
     <section
       id="home"
-      className="min-h-screen bg-[#0F172A] flex items-center justify-center px-4 md:px-6 pt-28 pb-16 overflow-hidden relative"
+      className="relative min-h-screen flex items-center overflow-hidden bg-[#020817]"
     >
-      {/* BACKGROUND ANIMATION */}
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 5, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-24 left-10 w-24 h-24 bg-[#38BDF8] border-[4px] border-black rounded-3xl opacity-30"
-      />
+      {/* ── BACKGROUND LAYER ── */}
+      <div className="absolute inset-0 grid-bg opacity-40" />
 
-      <motion.div
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, -8, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute bottom-20 right-10 w-20 h-20 bg-yellow-300 border-[4px] border-black rounded-full opacity-30"
-      />
+      {/* Gradient blobs */}
+      <div className="blob-1 top-0 left-0 opacity-60" />
+      <div className="blob-2 bottom-0 right-0 opacity-60" style={{ animationDelay: "3s" }} />
+      <div className="blob-3 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40" style={{ animationDelay: "5s" }} />
 
-      <div className="max-w-5xl w-full">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{
-            duration: 0.8,
-            type: "spring",
-            stiffness: 100,
-          }}
-          whileHover={{
-            rotate: -0.5,
-          }}
-          className="bg-[#F8FAFC] border-[4px] border-black rounded-[28px] p-6 md:p-10 shadow-[10px_10px_0px_#000]"
-        >
-          {/* TOP BADGE */}
+      {/* Radial vignette */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#020817] pointer-events-none" />
+
+      {/* ── CONTENT ── */}
+      <div className="section-container relative z-10 pt-24 pb-16 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+          {/* LEFT SIDE */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="flex justify-center md:justify-start mb-6"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="order-2 lg:order-1"
           >
-            <motion.div
-              whileHover={{
-                rotate: -3,
-                scale: 1.05,
-              }}
-              className="flex items-center gap-2 bg-[#38BDF8] border-[3px] border-black px-3 py-2 rounded-full shadow-[4px_4px_0px_#000]"
-            >
-              <motion.div
-                animate={{
-                  rotate: [0, 15, -15, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                }}
-              >
-                <Sparkles size={14} className="text-black" />
-              </motion.div>
-
-              <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-black">
-                Software Engineer
+            {/* Label badge */}
+            <motion.div variants={itemVariants} className="mb-6">
+              <span className="section-label">
+                <Sparkles size={12} className="text-blue-400" />
+                Available for work
               </span>
             </motion.div>
-          </motion.div>
 
-          {/* MAIN CONTENT */}
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* LEFT SIDE */}
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
+            {/* Headline */}
+            <motion.div variants={itemVariants}>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-3">
+                Hi, I&apos;m{" "}
+                <span className="shine-text">M. Saroni</span>
+              </h1>
+            </motion.div>
+
+            {/* Typing subtitle */}
+            <motion.div variants={itemVariants} className="mb-6">
+              <div className="flex items-center gap-2 text-xl sm:text-2xl font-medium text-slate-300">
+                <span className="text-slate-500">{"<"}</span>
+                <span className="text-blue-400 font-mono min-w-[260px]">
+                  {displayText}
+                  <span className="inline-block w-0.5 h-5 bg-blue-400 ml-0.5 animate-pulse" />
+                </span>
+                <span className="text-slate-500">{"/>"}</span>
+              </div>
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              variants={itemVariants}
+              className="text-base text-slate-400 leading-relaxed max-w-lg mb-8"
             >
-              <motion.h1 className="text-3xl md:text-5xl font-black leading-tight text-black mb-5">
-                Hello, I'm <br />
-                <motion.span
-                  whileHover={{
-                    rotate: -3,
-                    scale: 1.03,
-                  }}
-                  className="bg-[#2563EB] text-white px-3 py-1 inline-block border-[3px] border-black rounded-xl"
-                >
-                  M SARONI
-                </motion.span>
-              </motion.h1>
+              Mahasiswa D3 Manajemen Informatika di{" "}
+              <span className="text-slate-300 font-medium">Universitas Nasional PASIM</span>
+              , fokus pada backend Java, Spring Boot, dan web development modern. Membangun
+              sistem backend yang andal, antarmuka web yang bersih, dan solusi digital nyata.
+            </motion.p>
 
-              {/* TYPING TEXT */}
-              <motion.div
-                whileHover={{
-                  y: -3,
-                  rotate: 1,
-                }}
-                className="bg-white border-[3px] border-black rounded-2xl px-4 py-3 shadow-[5px_5px_0px_#000] mb-5"
-              >
-                <p className="text-base md:text-xl font-bold text-black">
-                  I'm a{" "}
-                  <span className="text-[#2563EB] border-r-[3px] border-black pr-1 animate-pulse">
-                    {displayText}
-                  </span>
-                </p>
-              </motion.div>
-
-              {/* DESCRIPTION */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="text-black font-medium leading-relaxed mb-6 text-sm md:text-[15px]"
-              >
-                Building reliable backend systems with Java. Focus on security,
-                scalability, and high-performance architecture.
-              </motion.p>
-
-              {/* BUTTON */}
+            {/* CTA Buttons */}
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-3 mb-10">
               <motion.button
-                whileHover={{
-                  y: -5,
-                  rotate: -2,
-                  scale: 1.03,
-                }}
-                whileTap={{
-                  scale: 0.95,
-                }}
-                className="flex items-center gap-2 bg-[#2563EB] text-white border-[3px] border-black px-5 py-3 rounded-2xl font-black shadow-[5px_5px_0px_#000] hover:shadow-[2px_2px_0px_#000] transition-all text-sm"
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={scrollToProjects}
+                className="btn-primary flex items-center gap-2"
               >
-                <motion.div
-                  animate={{
-                    y: [0, 2, 0],
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                  }}
-                >
-                  <Download size={16} />
-                </motion.div>
-                Download CV
+                View Projects
+                <ExternalLink size={15} />
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.03, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                onClick={scrollToContact}
+                className="btn-outline flex items-center gap-2"
+              >
+                Contact Me
               </motion.button>
             </motion.div>
 
-            {/* RIGHT SIDE */}
-            <motion.div
-              initial={{ opacity: 0, x: 60, rotate: 10 }}
-              animate={{ opacity: 1, x: 0, rotate: 0 }}
-              transition={{
-                delay: 0.4,
-                type: "spring",
-                stiffness: 120,
-              }}
-              className="relative flex justify-center items-center"
-            >
-              {/* FLOATING ANIMATION */}
-              <motion.div
-                animate={{
-                  y: [0, -12, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                {/* MAIN CARD */}
-                <motion.div
-                  whileHover={{
-                    rotate: 2,
-                    scale: 1.02,
-                  }}
-                  className="bg-[#38BDF8] border-[4px] border-black rounded-[24px] p-4 md:p-5 shadow-[8px_8px_0px_#000] rotate-2"
-                >
-                  {/* INNER FRAME */}
-                  <div className="relative bg-[#F8FAFC] border-[3px] border-black rounded-2xl px-4 pt-6 pb-3 rotate-[-2deg] overflow-hidden">
-                    {/* DECORATIVE CIRCLE */}
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.1, 1],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
-                      className="absolute top-3 right-3 w-12 h-12 bg-[#2563EB] border-[3px] border-black rounded-full"
-                    />
-
-                    {/* DECORATIVE BOX */}
-                    <motion.div
-                      animate={{
-                        rotate: [12, -5, 12],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                      }}
-                      className="absolute bottom-2 left-2 w-8 h-8 bg-yellow-300 border-[3px] border-black"
-                    />
-
-                    {/* PHOTO */}
-                    <motion.img
-                      src={myphoto}
-                      alt="My Photo"
-                      whileHover={{
-                        scale: 1.08,
-                        y: -5,
-                      }}
-                      className="relative z-10 w-[140px] md:w-[180px] object-contain mx-auto drop-shadow-[5px_5px_0px_rgba(0,0,0,0.8)] transition-all duration-300"
-                    />
-
-                    {/* BOTTOM TAG */}
-                    <motion.div
-                      whileHover={{
-                        rotate: -3,
-                        scale: 1.05,
-                      }}
-                      className="mt-3 flex justify-center"
-                    >
-                      <div className="bg-[#2563EB] text-white border-[3px] border-black px-3 py-2 rounded-xl shadow-[4px_4px_0px_#000] rotate-[-2deg]">
-                        <p className="font-black text-xs md:text-sm">
-                          JAVA DEVELOPER
-                        </p>
-                      </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* FLOATING BADGE */}
-              <motion.div
-                animate={{
-                  rotate: [6, 0, 6],
-                  y: [0, -5, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                }}
-                className="absolute -top-3 -right-1 bg-white border-[3px] border-black rounded-2xl px-3 py-2 shadow-[4px_4px_0px_#000]"
-              >
-                <span className="font-black text-xs md:text-sm text-black">
-                  ⚡ Creative Dev
-                </span>
-              </motion.div>
+            {/* Tech Badges */}
+            <motion.div variants={itemVariants}>
+              <p className="text-xs text-slate-500 uppercase tracking-widest mb-3 font-medium">
+                Tech Stack
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {techBadges.map((badge, i) => (
+                  <motion.span
+                    key={badge.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8 + i * 0.08 }}
+                    whileHover={{ y: -2, scale: 1.05 }}
+                    className={`text-xs font-medium px-3 py-1.5 rounded-lg bg-gradient-to-r ${badge.color} border backdrop-blur-sm cursor-default`}
+                  >
+                    {badge.name}
+                  </motion.span>
+                ))}
+              </div>
             </motion.div>
-          </div>
+
+            {/* Social links */}
+            <motion.div variants={itemVariants} className="flex items-center gap-4 mt-8">
+              <span className="text-xs text-slate-600">Find me on</span>
+              <div className="flex items-center gap-3">
+                <motion.a
+                  href="https://github.com/mrbaen454-xx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3, scale: 1.1 }}
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
+                >
+                  <FaGithub size={18} />
+                </motion.a>
+                <motion.a
+                  href="https://www.linkedin.com/in/m-saroni-383525405"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3, scale: 1.1 }}
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/20 transition-all duration-200"
+                >
+                  <FaLinkedin size={18} />
+                </motion.a>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* RIGHT SIDE - Photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="order-1 lg:order-2 flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600/30 to-violet-600/30 blur-3xl scale-110" />
+
+              {/* Rotating ring decoration */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-3 rounded-full border border-dashed border-blue-500/20"
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-6 rounded-full border border-dashed border-violet-500/10"
+              />
+
+              {/* Photo container */}
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative w-64 h-64 sm:w-80 sm:h-80"
+              >
+                {/* Glass card behind */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600/20 to-violet-600/20 backdrop-blur-sm border border-white/10" />
+
+                {/* Photo */}
+                <img
+                  src={myphoto}
+                  alt="M. Saroni - Java Backend Developer"
+                  className="relative z-10 w-full h-full object-cover rounded-full border-2 border-white/10"
+                  style={{ filter: "drop-shadow(0 0 30px rgba(59, 130, 246, 0.3))" }}
+                />
+
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll down indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        >
+          <span className="text-xs text-slate-600 uppercase tracking-widest">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowDown size={16} className="text-slate-600" />
+          </motion.div>
         </motion.div>
       </div>
     </section>

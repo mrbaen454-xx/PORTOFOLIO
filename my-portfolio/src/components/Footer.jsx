@@ -1,132 +1,137 @@
 import { motion } from "framer-motion";
+import { Code2, Heart, ArrowUp } from "lucide-react";
+import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const navLinks = [
+    { label: "Home", id: "home" },
+    { label: "About", id: "about" },
+    { label: "Skills", id: "skills" },
+    { label: "Projects", id: "projects" },
+    { label: "Contact", id: "contact" },
+  ];
+
+  const socials = [
+    {
+      icon: <FaGithub size={16} />,
+      href: "https://github.com/mrbaen454-xx",
+      label: "GitHub",
+    },
+    {
+      icon: <FaLinkedin size={16} />,
+      href: "https://www.linkedin.com/in/m-saroni-383525405",
+      label: "LinkedIn",
+    },
+    {
+      icon: <FaInstagram size={16} />,
+      href: "https://www.instagram.com/mchsroni",
+      label: "Instagram",
+    },
+  ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNavClick = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-[#0F172A] py-10 px-4 md:px-6 relative overflow-hidden">
-      {/* TOP LINE */}
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: "90%" }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="absolute top-0 left-1/2 -translate-x-1/2 h-[4px] bg-[#2563EB] border-b-[3px] border-black rounded-full"
-      />
+    <footer className="relative bg-[#020817] overflow-hidden">
+      {/* Top Divider */}
+      <div className="h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
 
-      {/* FLOATING SHAPES */}
-      <motion.div
-        animate={{
-          rotate: [0, 10, 0],
-          y: [0, -8, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-        }}
-        className="absolute top-6 left-10 w-10 h-10 bg-[#38BDF8] border-[3px] border-black rounded-xl opacity-20"
-      />
+      {/* Blob decoration */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-32 bg-gradient-to-t from-blue-600/5 to-transparent blur-3xl pointer-events-none" />
 
-      <motion.div
-        animate={{
-          rotate: [0, -10, 0],
-          y: [0, 8, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-        }}
-        className="absolute bottom-6 right-10 w-10 h-10 bg-yellow-300 border-[3px] border-black rounded-full opacity-20"
-      />
+      <div className="section-container relative z-10 py-12">
+        {/* Top Row */}
+        <div className="grid sm:grid-cols-3 gap-8 mb-10">
 
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-            scale: 0.95,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-            scale: 1,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.7,
-            type: "spring",
-          }}
-          whileHover={{
-            y: -4,
-          }}
-          className="bg-[#F8FAFC] border-[4px] border-black rounded-[28px] px-6 py-8 shadow-[8px_8px_0px_#000] transition-all"
-        >
-          {/* CONTENT */}
-          <div className="flex flex-col items-center text-center gap-4">
-            {/* COPYRIGHT */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-black text-sm md:text-base font-bold flex flex-wrap items-center justify-center gap-2"
-            >
-              <span>© {currentYear} Portfolio. Built with</span>
-
-              {/* HEART */}
-              <motion.span
-                animate={{
-                  scale: [1, 1.3, 1],
-                }}
-                transition={{
-                  duration: 1.2,
-                  repeat: Infinity,
-                }}
-                className="text-red-500"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  stroke="none"
-                >
-                  <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                </svg>
-              </motion.span>
-
-              <span>by</span>
-
-              {/* NAME */}
-              <motion.span
-                whileHover={{
-                  rotate: -3,
-                  scale: 1.08,
-                }}
-                className="bg-[#2563EB] text-white px-3 py-1 border-[3px] border-black rounded-xl font-black shadow-[3px_3px_0px_#000] rotate-[-2deg]"
-              >
-                M SARONI
-              </motion.span>
-            </motion.p>
-
-            {/* SUBTITLE */}
-            <motion.p
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{
-                delay: 0.4,
-                type: "spring",
-              }}
-              whileHover={{
-                scale: 1.05,
-                rotate: 2,
-              }}
-              className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-black text-black bg-yellow-300 border-[3px] border-black px-4 py-2 rounded-full shadow-[3px_3px_0px_#000]"
-            >
-              Crafted with Excellence • 2026
-            </motion.p>
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                <Code2 size={18} className="text-white" />
+              </div>
+              <span className="text-xl font-bold text-white">
+                Baen<span className="gradient-text">.</span>
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 leading-relaxed max-w-[200px]">
+              Java Backend Developer & Web Developer. Building digital solutions from Bandung, Indonesia.
+            </p>
           </div>
-        </motion.div>
+
+          {/* Quick Nav */}
+          <div>
+            <p className="text-xs text-slate-500 uppercase tracking-widest font-medium mb-4">Navigation</p>
+            <nav className="space-y-2">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
+                  className="block text-sm text-slate-400 hover:text-blue-400 transition-colors duration-200"
+                >
+                  {link.label}
+                </button>
+              ))}
+            </nav>
+          </div>
+
+          {/* Socials */}
+          <div>
+            <p className="text-xs text-slate-500 uppercase tracking-widest font-medium mb-4">Connect</p>
+            <div className="space-y-2.5">
+              {socials.map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 3 }}
+                  className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-white transition-colors duration-200 group"
+                >
+                  <span className="w-7 h-7 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:border-blue-500/30 group-hover:text-blue-400 transition-all duration-200">
+                    {social.icon}
+                  </span>
+                  {social.label}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Row */}
+        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-slate-500 flex items-center gap-1.5">
+            © {currentYear} M. Saroni. All rights reserved. Built with
+            <motion.span
+              animate={{ scale: [1, 1.25, 1] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+              className="text-red-400"
+            >
+              <Heart size={12} fill="currentColor" />
+            </motion.span>
+            by Baen
+          </p>
+
+          {/* Back to top */}
+          <motion.button
+            onClick={scrollToTop}
+            whileHover={{ y: -3, scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-white transition-colors duration-200 group"
+          >
+            Back to top
+            <span className="w-6 h-6 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-blue-500/20 group-hover:border-blue-500/30 group-hover:text-blue-400 transition-all duration-200">
+              <ArrowUp size={11} />
+            </span>
+          </motion.button>
+        </div>
       </div>
     </footer>
   );
