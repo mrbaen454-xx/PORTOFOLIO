@@ -19,7 +19,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl sm:text-7xl md:text-[5.5rem] lg:text-[7rem] font-black tracking-tight leading-none mb-2 text-black/90"
+            className="font-gothic text-5xl sm:text-7xl md:text-[5.5rem] lg:text-[7rem] tracking-wide leading-none mb-2 text-black/90"
           >
             Thank You
           </motion.h1>
