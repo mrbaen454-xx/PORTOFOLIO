@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2, Mail } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,37 +65,38 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[9999]">
+    <header className="fixed top-0 left-0 w-full z-[9999] font-outfit">
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`transition-all duration-500 ${
           scrolled
-            ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
-            : "bg-transparent"
+            ? "bg-noise border-b border-black/10 shadow-sm py-3 z-50"
+            : "bg-transparent py-6 z-50"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-12">
+          <div className="flex items-center justify-between h-10 relative">
 
             {/* LOGO */}
             <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => handleNavClick("home")}
-              className="flex items-center gap-2.5 group"
+              className="flex flex-col items-start cursor-pointer z-10"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.4)] group-hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] transition-all duration-300">
-                <Code2 size={18} className="text-white" />
-              </div>
-              <span className="text-xl font-bold text-white">
-                Baen<span className="gradient-text">.</span>
-              </span>
+              <span className="text-xl sm:text-2xl font-bold leading-none tracking-tighter text-black">Baen.</span>
+              <span className="text-[10px] sm:text-xs font-medium tracking-wide text-black uppercase">Station</span>
             </motion.button>
 
+            {/* CENTER TAG - from hero */}
+            <div className="hidden xl:block absolute left-1/2 -translate-x-1/2 pointer-events-none">
+              <span className="text-sm font-medium tracking-widest uppercase text-black">- WEB DEVELOPER -</span>
+            </div>
+
             {/* DESKTOP NAV */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-1 z-10">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
@@ -105,29 +106,32 @@ const Navbar = () => {
                   transition={{ delay: 0.1 + index * 0.08 }}
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     activeSection === item.id
-                      ? "text-white"
-                      : "text-slate-400 hover:text-white"
+                      ? "text-black font-bold"
+                      : "text-black/60 hover:text-black"
                   }`}
                 >
                   {activeSection === item.id && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute inset-0 rounded-lg bg-white/10 border border-white/10"
+                      className="absolute inset-0 rounded-lg bg-black/5"
                       transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
                     />
                   )}
                   <span className="relative z-10">{item.label}</span>
                 </motion.button>
               ))}
+              
+              {/* YEAR - from hero */}
+              <div className="ml-4 pl-4 border-l border-black/20">
+                <span className="text-base font-bold text-black">2026</span>
+              </div>
             </div>
-
-            {/* CTA BUTTON DESKTOP - Removed as requested */}
 
             {/* HAMBURGER MOBILE */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-white"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-black/5 border border-black/10 text-black z-10"
               aria-label="Toggle menu"
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -139,7 +143,7 @@ const Navbar = () => {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.15 }}
                   >
-                    <X size={18} />
+                    <X size={20} />
                   </motion.span>
                 ) : (
                   <motion.span
@@ -149,7 +153,7 @@ const Navbar = () => {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.15 }}
                   >
-                    <Menu size={18} />
+                    <Menu size={20} />
                   </motion.span>
                 )}
               </AnimatePresence>
@@ -168,7 +172,7 @@ const Navbar = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9990] md:hidden"
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9990] md:hidden"
             />
 
             {/* Menu Panel */}
@@ -177,14 +181,14 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 h-full w-72 bg-slate-950/95 backdrop-blur-xl border-l border-white/[0.07] z-[9995] md:hidden shadow-[-20px_0_60px_rgba(0,0,0,0.5)]"
+              className="fixed top-0 right-0 h-full w-72 bg-white/95 backdrop-blur-xl border-l border-black/10 z-[9995] md:hidden shadow-[-20px_0_60px_rgba(0,0,0,0.1)]"
             >
               {/* Close button in panel */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.07]">
-                <span className="text-lg font-bold gradient-text">Menu</span>
+              <div className="flex items-center justify-between px-6 py-6 border-b border-black/10">
+                <span className="text-lg font-bold text-black">Menu</span>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-colors"
+                  className="w-8 h-8 flex items-center justify-center rounded-lg bg-black/5 border border-black/10 text-black/60 hover:text-black transition-colors"
                 >
                   <X size={16} />
                 </button>
@@ -201,21 +205,20 @@ const Navbar = () => {
                     transition={{ delay: index * 0.07 }}
                     className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left font-medium transition-all duration-200 ${
                       activeSection === item.id
-                        ? "bg-blue-600/20 text-blue-400 border border-blue-500/20"
-                        : "text-slate-400 hover:text-white hover:bg-white/5"
+                        ? "bg-black/5 text-black border border-black/10"
+                        : "text-black/60 hover:text-black hover:bg-black/5"
                     }`}
                   >
-                    <span className="text-xs font-mono text-slate-600">0{index + 1}</span>
+                    <span className="text-xs font-mono text-black/40">0{index + 1}</span>
                     {item.label}
                   </motion.button>
                 ))}
               </div>
 
-              {/* CTA in mobile menu - Removed as requested */}
-
               {/* Footer info */}
-              <div className="absolute bottom-8 left-0 right-0 px-6 text-center">
-                <p className="text-xs text-slate-600">M. Saroni © 2026</p>
+              <div className="absolute bottom-8 left-0 right-0 px-6 text-center flex flex-col gap-2">
+                <span className="text-xs font-bold tracking-widest uppercase text-black">- WEB DEVELOPER -</span>
+                <p className="text-xs text-black/60">M. Saroni © 2026</p>
               </div>
             </motion.div>
           </>

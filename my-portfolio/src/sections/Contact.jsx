@@ -1,185 +1,106 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, MessageSquare, CheckCircle } from "lucide-react";
-import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { ChevronDown } from "lucide-react";
+import ttd from "../assets/ttd.png";
 
 const Contact = () => {
-  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const contactInfo = [
-    {
-      icon: <Mail size={18} />,
-      title: "Email",
-      value: "msaroni454@gmail.com",
-      link: "mailto:msaroni454@gmail.com",
-      color: "text-blue-400",
-      bg: "bg-blue-500/10 border-blue-500/20",
-    },
-    {
-      icon: <Phone size={18} />,
-      title: "Phone",
-      value: "+62 888 2111 780",
-      link: "tel:+628882111780",
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10 border-emerald-500/20",
-    },
-    {
-      icon: <MapPin size={18} />,
-      title: "Location",
-      value: "Bandung, Indonesia",
-      link: "https://maps.app.goo.gl/HG7fb8YqkWNfe24x9",
-      color: "text-violet-400",
-      bg: "bg-violet-500/10 border-violet-500/20",
-    },
-  ];
-
-  const socials = [
-    {
-      name: "GitHub",
-      icon: <FaGithub size={18} />,
-      url: "https://github.com/mrbaen454-xx",
-      username: "@mrbaen454-xx",
-      color: "hover:border-slate-400/30 hover:bg-slate-400/10 hover:text-white",
-    },
-    {
-      name: "LinkedIn",
-      icon: <FaLinkedin size={18} />,
-      url: "https://www.linkedin.com/in/m-saroni-383525405",
-      username: "M. Saroni",
-      color: "hover:border-blue-400/30 hover:bg-blue-400/10 hover:text-blue-400",
-    },
-    {
-      name: "Instagram",
-      icon: <FaInstagram size={18} />,
-      url: "https://www.instagram.com/mchsroni",
-      username: "@mchsroni",
-      color: "hover:border-pink-400/30 hover:bg-pink-400/10 hover:text-pink-400",
-    },
-  ];
-
-  const handleChange = (e) => {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    // Simulate sending (no backend)
-    setTimeout(() => {
-      setIsLoading(false);
-      setSubmitted(true);
-      setFormState({ name: "", email: "", message: "" });
-    }, 1500);
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
-    <section id="contact" className="relative py-24 bg-[#020817] overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 grid-bg opacity-25" />
-      <div className="blob-2 top-0 right-0 opacity-30" style={{ animationDelay: "2s" }} />
-      <div className="blob-1 bottom-0 left-1/4 opacity-20" style={{ animationDelay: "5s" }} />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
+    <section id="contact" className="relative w-full min-h-screen bg-noise font-outfit text-black flex items-center justify-center p-8 md:p-16 overflow-hidden">
+      
+      {/* Top right floating text */}
+      <div className="absolute top-8 right-8 md:top-12 md:right-16 text-sm font-medium tracking-wide">
+        @m_saroni2024
+      </div>
 
-      <div className="section-container relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="section-label mb-4 inline-flex">
-            <MessageSquare size={12} />
-            Get in Touch
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-4">
-            Let&apos;s <span className="gradient-text">Connect</span>
-          </h2>
-          <p className="text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Mau ngobrol soal project, kerja bareng, atau sekadar diskusi tech? Langsung aja hubungi saya.
-          </p>
-        </motion.div>
-
-        <div className="max-w-2xl mx-auto items-start">
-
-          {/* Contact Info */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+      <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-20 md:gap-24 relative z-10 px-6 sm:px-12">
+        
+        {/* Left Side: Thank You */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center mt-12 md:mt-24">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-5xl sm:text-7xl md:text-[5.5rem] lg:text-[7rem] font-black tracking-tight leading-none mb-2 text-black/90"
           >
-            {/* Contact Cards */}
-            <div className="space-y-3 mb-8">
-              {contactInfo.map((info, i) => (
-                <motion.a
-                  key={i}
-                  href={info.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={itemVariants}
-                  whileHover={{ x: 6, scale: 1.01 }}
-                  className={`flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r ${info.bg} border backdrop-blur-sm transition-all duration-300 group`}
-                >
-                  <div className={`w-10 h-10 rounded-lg ${info.bg} border flex items-center justify-center flex-shrink-0 ${info.color} group-hover:scale-110 transition-transform duration-200`}>
-                    {info.icon}
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider font-medium mb-0.5">
-                      {info.title}
-                    </p>
-                    <p className={`text-sm font-semibold ${info.color}`}>{info.value}</p>
-                  </div>
-                  <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className={`w-5 h-5 rounded-full ${info.bg} border flex items-center justify-center ${info.color}`}>
-                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                        <path d="M1 7L7 1M7 1H2M7 1V6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <motion.div variants={itemVariants}>
-              <p className="text-xs text-slate-500 uppercase tracking-widest font-medium mb-4">Follow me</p>
-              <div className="space-y-2.5">
-                {socials.map((social, i) => (
-                  <motion.a
-                    key={i}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ x: 4 }}
-                    className={`flex items-center gap-3 p-3 rounded-xl glass-card text-slate-400 border border-white/[0.08] transition-all duration-200 group ${social.color}`}
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                      {social.icon}
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">{social.name}</p>
-                      <p className="text-xs text-slate-600">{social.username}</p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
+            Thank You
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-xl sm:text-3xl md:text-4xl italic text-black/70 font-light"
+          >
+            checking these out!
+          </motion.p>
         </div>
+
+        {/* Right Side: Details */}
+        <div className="w-full md:w-1/2 flex flex-col mt-4 md:mt-16 md:pl-12 lg:pl-24">
+          
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mb-12"
+          >
+            <h2 className="text-xl md:text-[1.75rem] font-bold mb-6 text-black/90">Contact</h2>
+            <div className="space-y-4 text-sm md:text-[15px]">
+              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="text-black/60 transition-colors group-hover:text-black">Email</span>
+                <span className="font-semibold text-black/80 transition-colors group-hover:text-black">msaroni454@gmail.com</span>
+              </div>
+              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="text-black/60 transition-colors group-hover:text-black">Phone</span>
+                <span className="font-semibold text-black/80 transition-colors group-hover:text-black">+62 888 2111 780</span>
+              </div>
+              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="text-black/60 transition-colors group-hover:text-black">Location</span>
+                <span className="font-semibold text-black/80 transition-colors group-hover:text-black">Bandung, Indonesia</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <h2 className="text-xl md:text-[1.75rem] font-bold mb-6 text-black/90">Follow my socials</h2>
+            <div className="space-y-4 text-sm md:text-[15px]">
+              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="text-black/60 transition-colors group-hover:text-black">GitHub</span>
+                <a href="https://github.com/mrbaen454-xx" target="_blank" rel="noreferrer" className="font-semibold text-black/80 hover:underline transition-colors group-hover:text-black">github.com/mrbaen454-xx</a>
+              </div>
+              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="text-black/60 transition-colors group-hover:text-black">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/m-saroni-383525405" target="_blank" rel="noreferrer" className="font-semibold text-black/80 hover:underline transition-colors group-hover:text-black">M. Saroni</a>
+              </div>
+              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="text-black/60 transition-colors group-hover:text-black">Instagram</span>
+                <a href="#" className="font-semibold text-black/80 hover:underline transition-colors group-hover:text-black">@mchsroni</a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Signature */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="mt-16 md:mt-20 self-end flex flex-col items-center mr-4 md:-mr-8"
+          >
+            <img 
+              src={ttd} 
+              alt="M. Saroni Signature" 
+              className="w-40 sm:w-48 mb-2 opacity-90 object-contain mix-blend-multiply"
+            />
+            <span className="font-bold text-sm tracking-wide text-center">M. Saroni</span>
+          </motion.div>
+
+        </div>
+      </div>
+
+      <div className="absolute bottom-10 right-10 sm:bottom-12 sm:right-16 z-10 hidden sm:block">
+        <span className="font-syncopate text-lg font-bold">04</span>
       </div>
     </section>
   );

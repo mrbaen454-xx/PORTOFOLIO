@@ -6,6 +6,10 @@ export default {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         mono: ["Fira Code", "monospace"],
+        gothic: ["UnifrakturMaguntia", "cursive"],
+        syncopate: ["Syncopate", "sans-serif"],
+        script: ["Great Vibes", "cursive"],
+        outfit: ["Outfit", "sans-serif"],
       },
       colors: {
         navy: {

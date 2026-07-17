@@ -1,204 +1,187 @@
 import { motion } from "framer-motion";
-import { User, Code2, Database, Zap, Users, BookOpen, MapPin, GraduationCap } from "lucide-react";
-import myphoto1 from "../assets/myphoto1.jpeg";
+import myphoto1 from "../assets/myphoto.png";
+import { FaJava, FaReact, FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiSpringboot, SiPostgresql } from "react-icons/si";
+import { Phone, Mail } from "lucide-react";
+
+// Helper component for the dot rating
+const DotRating = ({ rating }) => {
+  return (
+    <div className="flex gap-1 mt-1 justify-center">
+      {[1, 2, 3, 4, 5].map((dot) => (
+        <div
+          key={dot}
+          className={`w-1.5 h-1.5 rounded-full ${dot <= rating ? "bg-black" : "border border-black bg-transparent"
+            }`}
+        />
+      ))}
+    </div>
+  );
+};
+
 
 const About = () => {
-  const stats = [
-    { value: "4+", label: "Projects Built", icon: <Code2 size={16} /> },
-    { value: "2+", label: "Years Learning", icon: <BookOpen size={16} /> },
-    { value: "10+", label: "Technologies", icon: <Zap size={16} /> },
-    { value: "100%", label: "Commitment", icon: <Users size={16} /> },
-  ];
-
-  const highlights = [
-    {
-      icon: <GraduationCap size={20} />,
-      title: "Education",
-      desc: "D3 Manajemen Informatika – Universitas Nasional PASIM, Bandung (2024 – present)",
-      color: "text-blue-400",
-      bg: "bg-blue-500/10 border-blue-500/20",
-    },
-    {
-      icon: <Code2 size={20} />,
-      title: "Focus",
-      desc: "Backend development pakai Java Spring Boot, REST API, JWT, dan mulai belajar Microservices",
-      color: "text-violet-400",
-      bg: "bg-violet-500/10 border-violet-500/20",
-    },
-    {
-      icon: <Database size={20} />,
-      title: "Database",
-      desc: "Ngatur data pakai MySQL dan PostgreSQL. Paham cara desain database relasional yang efisien",
-      color: "text-cyan-400",
-      bg: "bg-cyan-500/10 border-cyan-500/20",
-    },
-    {
-      icon: <Users size={20} />,
-      title: "Collaboration",
-      desc: "Terbiasa kerja bareng tim pakai Git dan GitHub buat develop project bareng-bareng",
-      color: "text-emerald-400",
-      bg: "bg-emerald-500/10 border-emerald-500/20",
-    },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-  };
-
   return (
-    <section id="about" className="relative py-24 bg-[#020817] overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="blob-2 top-1/4 right-0 opacity-30" />
-      <div className="blob-1 bottom-0 left-0 opacity-25" style={{ animationDelay: "3s" }} />
+    <section id="about" className="relative min-h-screen py-24 bg-noise font-outfit text-black flex items-center">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-12 w-full relative">
+        <div className="grid lg:grid-cols-[3fr_4fr_3fr] gap-16 lg:gap-24 items-start">
 
-      <div className="section-container relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="section-label mb-4 inline-flex">
-            <User size={12} />
-            About Me
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-4">
-            My <span className="gradient-text">Journey</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Sedikit cerita tentang perjalanan saya di dunia programming.
-          </p>
-        </motion.div>
-
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-
-          {/* LEFT: Text + Stats */}
+          {/* ── LEFT COLUMN: Photo Card ── */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.6 }}
+            className="relative w-full max-w-sm mx-auto lg:max-w-none aspect-[3/4] bg-white rounded-3xl overflow-hidden shadow-2xl border border-black/5"
           >
-            {/* Photo + Identity Card */}
-            <div className="glass-card p-6 mb-6">
-              <div className="flex items-start gap-5">
-                {/* Photo */}
-                <div className="relative flex-shrink-0">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden border border-white/10">
-                    <img
-                      src={myphoto1}
-                      alt="M. Saroni"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full border-2 border-slate-900 flex items-center justify-center">
-                    <div className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse" />
-                  </div>
-                </div>
 
-                {/* Identity */}
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-1">M. Saroni (Baen)</h3>
-                  <p className="text-sm text-blue-400 font-medium mb-2">Java Backend Developer</p>
-                  <div className="flex items-center gap-1.5 text-xs text-slate-500">
-                    <MapPin size={11} />
-                    <span>Bandung, Indonesia</span>
-                  </div>
-                </div>
-              </div>
 
-              {/* Bio */}
-              <div className="mt-5 pt-5 border-t border-white/[0.06]">
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  Saya mulai belajar programming tahun <span className="text-slate-300 font-medium">2024</span>{" "}
-                  pas dapet beasiswa PUB di Universitas Nasional PASIM. Dari situ mulai ketagihan
-                  ngulik Java buat backend, terus pelan-pelan belajar juga{" "}
-                  <span className="text-blue-400 font-medium">Spring Boot</span>,{" "}
-                  <span className="text-violet-400 font-medium">React</span>, dan{" "}
-                  <span className="text-cyan-400 font-medium">database</span>.
-                  Masih terus belajar tiap hari.
-                </p>
-              </div>
+            {/* Photo */}
+            <div className="absolute inset-0 bg-gray-200">
+              <img
+                src={myphoto1}
+                alt="M. Saroni"
+                className="w-full h-full object-cover grayscale-[20%] contrast-125"
+              />
             </div>
 
-            {/* Stats Grid */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-3"
-            >
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={i}
-                  variants={itemVariants}
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  className="glass-card p-4 text-center hover:bg-white/[0.07] transition-all duration-300 border-white/[0.08] hover:border-white/[0.15]"
-                >
-                  <div className="flex items-center justify-center gap-1.5 text-blue-400 mb-2">
-                    {stat.icon}
-                  </div>
-                  <p className="text-2xl font-bold gradient-text-bv mb-1">{stat.value}</p>
-                  <p className="text-xs text-slate-500 font-medium">{stat.label}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* Signature Overlay */}
+            <div className="absolute bottom-6 right-6 z-20 rotate-[-10deg]">
+              <span className="font-script text-5xl text-white drop-shadow-md">Baen</span>
+            </div>
+            {/* Subtle inner shadow for the card */}
+            <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.2)] pointer-events-none" />
           </motion.div>
 
-          {/* RIGHT: Highlight Cards */}
+          {/* ── MIDDLE COLUMN: Bio & Education ── */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="space-y-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col h-full"
           >
-            {highlights.map((item, i) => (
-              <motion.div
-                key={i}
-                variants={itemVariants}
-                whileHover={{ x: 4, scale: 1.01 }}
-                className={`flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r ${item.bg} border backdrop-blur-sm transition-all duration-300 cursor-default`}
-              >
-                <div className={`w-10 h-10 rounded-lg ${item.bg} border flex items-center justify-center flex-shrink-0 ${item.color}`}>
-                  {item.icon}
-                </div>
-                <div>
-                  <h4 className={`text-sm font-semibold ${item.color} mb-1`}>{item.title}</h4>
-                  <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+            {/* Greeting */}
+            <h2 className="font-syncopate text-4xl sm:text-5xl font-bold tracking-tighter mb-6 text-black/90">
+              Hello!!
+            </h2>
 
-            {/* Quote card */}
-            <motion.div
-              variants={itemVariants}
-              className="glass-card p-5 mt-2"
-            >
-              <div className="flex gap-3 items-start">
-                <span className="text-4xl text-blue-500/40 font-serif leading-none mt-1">&ldquo;</span>
-                <div>
-                  <p className="text-sm text-slate-300 italic leading-relaxed">
-                    Buat saya, coding itu bukan cuma soal bikin yang jalan doang. Tapi gimana
-                    caranya bikin kode yang bersih dan gampang di-maintain ke depannya.
-                  </p>
-                  <p className="text-xs text-slate-500 mt-3 font-medium">— M. Saroni</p>
+            {/* Bio Paragraph */}
+            <p className="text-xs sm:text-sm font-semibold leading-relaxed text-black/80 mb-6 text-justify">
+              My name is M. Saroni, also known as &quot;Baen&quot;. I am a Java Backend Developer with a deep passion for building robust logic and efficient databases. My goal is to transform complex requirements into clean, scalable backend systems. With experience in Spring Boot, REST APIs, and database design, I believe every application must achieve a perfect balance between performance and maintainability.
+            </p>
+
+            <p className="text-xs sm:text-sm font-bold mb-10 text-black/90">
+              hope you enjoy my portfolio!
+            </p>
+
+            {/* Education */}
+            <h3 className="font-syncopate text-xl sm:text-2xl font-bold tracking-tighter mb-4 text-black/90">
+              EDUCATION
+            </h3>
+
+            <div className="mb-4 group">
+              <p className="text-xs sm:text-sm font-bold transition-colors duration-300 group-hover:text-black/50">2024-Present : Universitas Nasional PASIM</p>
+              <p className="text-[10px] sm:text-xs text-black/80 font-semibold mt-1">Pursuing a Degree in D3 Manajemen Informatika</p>
+            </div>
+            <div className="mb-10 group">
+              <p className="text-xs sm:text-sm font-bold transition-colors duration-300 group-hover:text-black/50">2024 : PUB Scholarship</p>
+              <p className="text-[10px] sm:text-xs text-black/80 font-semibold mt-1">Awarded full academic scholarship</p>
+            </div>
+
+            {/* Contact Info (Bottom of Middle Column) */}
+            <div className="flex flex-wrap items-center gap-6 mt-auto">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center">
+                  <Phone size={12} fill="currentColor" />
                 </div>
+                <span className="text-xs font-bold">0888 2111 780</span>
               </div>
-            </motion.div>
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center">
+                  <Mail size={12} fill="currentColor" />
+                </div>
+                <span className="text-xs font-bold">@msaroni454</span>
+              </div>
+            </div>
           </motion.div>
+
+          {/* ── RIGHT COLUMN: Skills, Experience, Language ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col h-full"
+          >
+            {/* SOFTWARE / TECH STACK */}
+            <h3 className="font-syncopate text-xl sm:text-2xl font-bold tracking-tighter mb-4 uppercase text-black/90">
+              SOFTWARE
+            </h3>
+            <div className="flex flex-wrap gap-4 mb-10">
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col items-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-black text-white rounded-xl flex items-center justify-center text-2xl sm:text-3xl mb-1 shadow-lg">
+                  <FaJava />
+                </div>
+                <DotRating rating={4} />
+              </motion.div>
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col items-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-black text-white rounded-xl flex items-center justify-center text-2xl sm:text-3xl mb-1 shadow-lg">
+                  <SiSpringboot />
+                </div>
+                <DotRating rating={4} />
+              </motion.div>
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col items-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-black text-white rounded-xl flex items-center justify-center text-2xl sm:text-3xl mb-1 shadow-lg">
+                  <FaReact />
+                </div>
+                <DotRating rating={3} />
+              </motion.div>
+              <motion.div whileHover={{ y: -5 }} className="flex flex-col items-center">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-black text-white rounded-xl flex items-center justify-center text-2xl sm:text-3xl mb-1 shadow-lg">
+                  <SiPostgresql />
+                </div>
+                <DotRating rating={4} />
+              </motion.div>
+            </div>
+
+            {/* EXPERIENCE */}
+            <h3 className="font-syncopate text-xl sm:text-2xl font-bold tracking-tighter mb-4 text-black/90">
+              EXPERIENCE
+            </h3>
+            <div className="mb-4 group">
+              <p className="text-xs sm:text-sm font-bold transition-colors duration-300 group-hover:text-black/50">2024 - Present :</p>
+              <p className="text-[10px] sm:text-xs text-black/80 font-semibold mt-1">Java Backend Developer</p>
+            </div>
+            <div className="mb-10 group">
+              <p className="text-xs sm:text-sm font-bold transition-colors duration-300 group-hover:text-black/50">2024 - Present :</p>
+              <p className="text-[10px] sm:text-xs text-black/80 font-semibold mt-1">Web Developer ( Freelance )</p>
+            </div>
+
+
+            {/* Social Links (Bottom of Right Column) */}
+            <div className="flex items-center gap-6 mt-auto lg:justify-end">
+              <a href="https://github.com/mrbaen454-xx" target="_blank" rel="noreferrer" className="flex items-center gap-2 group">
+                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaGithub size={14} />
+                </div>
+                <span className="text-[10px] font-bold group-hover:underline leading-tight">mrbaen454-xx</span>
+              </a>
+              <a href="https://www.linkedin.com/in/m-saroni-383525405" target="_blank" rel="noreferrer" className="flex items-center gap-2 group">
+                <div className="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <FaLinkedin size={12} />
+                </div>
+                <span className="text-[10px] font-bold group-hover:underline leading-tight">M. Saroni</span>
+              </a>
+            </div>
+          </motion.div>
+
         </div>
+      </div>
+
+      {/* Page Number (Bottom Right corner of the section) */}
+      <div className="absolute bottom-10 right-10 sm:bottom-12 sm:right-16 z-10 hidden sm:block">
+        <span className="font-syncopate text-lg font-bold">01</span>
       </div>
     </section>
   );
