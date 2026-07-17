@@ -44,7 +44,7 @@ const Skills = () => {
             My <span className="gradient-text">Tech Stack</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Technologies and tools I use to build reliable backend systems and modern web applications.
+            Tools dan teknologi yang saya pakai sehari-hari buat ngerjain project.
           </p>
         </motion.div>
 

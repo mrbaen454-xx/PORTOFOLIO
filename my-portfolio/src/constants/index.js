@@ -63,7 +63,7 @@ export const skillCategories = [
       { name: "GitHub", level: 80 },
       { name: "Postman", level: 75 },
       { name: "VS Code", level: 90 },
-      { name: "Antigravity", level: 75 },
+      { name: "IntelliJ IDEA", level: 75 },
       { name: "Maven", level: 70 },
     ],
   },
@@ -76,8 +76,8 @@ export const projects = [
     title: "BKA Access",
     category: "fullstack",
     description:
-      "Modern railway ticket booking and travel management platform inspired by KAI Access. Built with Java Spring Boot backend and Thymeleaf templating.",
-    image: null, // Will use imported asset in component
+      "Website booking tiket kereta api terinspirasi dari KAI Access. Pakai Spring Boot di backend dan Thymeleaf buat tampilannya.",
+    image: null,
     imageKey: "bkaAcces",
     tech: ["Java Spring Boot", "Thymeleaf", "MySQL", "HTML", "CSS", "JavaScript"],
     githubUrl: "https://github.com/mrbaen454-xx/bka_access.git",
@@ -85,25 +85,11 @@ export const projects = [
     featured: true,
   },
   {
-    id: 2,
-    title: "Pemilihan Ketua OSIS",
-    category: "html",
-    description:
-      "Interactive school election website with modern UI design. Simulates a complete digital voting system with candidate display and responsive design.",
-    image: null,
-    imageKey: "pemilihanOsis",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    githubUrl:
-      "https://github.com/mrbaen454-xx/ProjekanWebPemilihanKetuaOsis-simulasi-tampilan-.git",
-    liveUrl: null,
-    featured: false,
-  },
-  {
     id: 3,
     title: "Baen Game",
     category: "html",
     description:
-      "Game showcase website with modern layout and responsive experience. Features smooth navigation and game catalog display.",
+      "Website katalog game dengan layout modern dan navigasi yang smooth. Projek latihan HTML/CSS pertama saya.",
     image: null,
     imageKey: "baenGame",
     tech: ["HTML5", "CSS3", "JavaScript"],
@@ -116,11 +102,24 @@ export const projects = [
     title: "HIMAMI Website",
     category: "react",
     description:
-      "Official website of the Informatics Management Student Association (HIMAMI). Central hub for organizational info, activities, division structure, gallery, and contact details.",
+      "Website resmi Himpunan Mahasiswa Manajemen Informatika (HIMAMI). Berisi info organisasi, kegiatan, struktur divisi, galeri, dan kontak.",
     image: null,
     imageKey: "himami",
     tech: ["React", "JavaScript", "CSS"],
     githubUrl: "https://github.com/mrbaen454-xx/HIMAMI.git",
+    liveUrl: null,
+    featured: true,
+  },
+  {
+    id: 5,
+    title: "Baentech Store",
+    category: "fullstack",
+    description:
+      "Website toko elektronik dengan arsitektur Microservices. Fitur utama: API Gateway, Eureka Server, payment gateway, dan login SSO.",
+    image: null,
+    imageKey: "baentechStore",
+    tech: ["Java Spring Boot", "Microservices", "PostgreSQL", "API Gateway", "Eureka Server", "SSO", "React", "Tailwind CSS", "Vite"],
+    githubUrl: "#",
     liveUrl: null,
     featured: true,
   },

@@ -21,21 +21,21 @@ const About = () => {
     {
       icon: <Code2 size={20} />,
       title: "Focus",
-      desc: "Java Backend Development with Spring Boot, REST API, JWT Security, and Microservices architecture",
+      desc: "Backend development pakai Java Spring Boot, REST API, JWT, dan mulai belajar Microservices",
       color: "text-violet-400",
       bg: "bg-violet-500/10 border-violet-500/20",
     },
     {
       icon: <Database size={20} />,
       title: "Database",
-      desc: "Efficient data management with MySQL and PostgreSQL. Strong understanding of relational DB design",
+      desc: "Ngatur data pakai MySQL dan PostgreSQL. Paham cara desain database relasional yang efisien",
       color: "text-cyan-400",
       bg: "bg-cyan-500/10 border-cyan-500/20",
     },
     {
       icon: <Users size={20} />,
       title: "Collaboration",
-      desc: "Experienced with Git, GitHub workflows, and team collaboration to build high-quality software",
+      desc: "Terbiasa kerja bareng tim pakai Git dan GitHub buat develop project bareng-bareng",
       color: "text-emerald-400",
       bg: "bg-emerald-500/10 border-emerald-500/20",
     },
@@ -75,7 +75,7 @@ const About = () => {
             My <span className="gradient-text">Journey</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            Passionate developer focused on building reliable, scalable backend systems and elegant web interfaces.
+            Sedikit cerita tentang perjalanan saya di dunia programming.
           </p>
         </motion.div>
 
@@ -120,13 +120,13 @@ const About = () => {
               {/* Bio */}
               <div className="mt-5 pt-5 border-t border-white/[0.06]">
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Perjalanan saya di dunia programming dimulai pada tahun <span className="text-slate-300 font-medium">2024</span>{" "}
-                  melalui beasiswa PUB di Universitas Nasional PASIM. Saya fokus pada
-                  Java backend development dengan passion pada clean architecture, scalability,
-                  dan maintainable code. Saat ini aktif mengembangkan skill di bidang{" "}
+                  Saya mulai belajar programming tahun <span className="text-slate-300 font-medium">2024</span>{" "}
+                  pas dapet beasiswa PUB di Universitas Nasional PASIM. Dari situ mulai ketagihan
+                  ngulik Java buat backend, terus pelan-pelan belajar juga{" "}
                   <span className="text-blue-400 font-medium">Spring Boot</span>,{" "}
                   <span className="text-violet-400 font-medium">React</span>, dan{" "}
-                  <span className="text-cyan-400 font-medium">database management</span>.
+                  <span className="text-cyan-400 font-medium">database</span>.
+                  Masih terus belajar tiap hari.
                 </p>
               </div>
             </div>
@@ -190,8 +190,8 @@ const About = () => {
                 <span className="text-4xl text-blue-500/40 font-serif leading-none mt-1">&ldquo;</span>
                 <div>
                   <p className="text-sm text-slate-300 italic leading-relaxed">
-                    I focus on creating systems that are not just functional, but also reliable,
-                    scalable, and easy to maintain. Every line of code matters.
+                    Buat saya, coding itu bukan cuma soal bikin yang jalan doang. Tapi gimana
+                    caranya bikin kode yang bersih dan gampang di-maintain ke depannya.
                   </p>
                   <p className="text-xs text-slate-500 mt-3 font-medium">— M. Saroni</p>
                 </div>

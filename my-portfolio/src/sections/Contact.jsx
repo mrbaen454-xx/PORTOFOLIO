@@ -109,7 +109,7 @@ const Contact = () => {
             Let&apos;s <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Terbuka untuk peluang kerja, kolaborasi project, atau sekadar diskusi seputar teknologi.
+            Mau ngobrol soal project, kerja bareng, atau sekadar diskusi tech? Langsung aja hubungi saya.
           </p>
         </motion.div>
 

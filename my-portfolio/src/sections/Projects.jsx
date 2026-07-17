@@ -10,15 +10,15 @@ import {
 import { FaGithub } from "react-icons/fa";
 
 import bkaAcces from "../assets/bkaAcces.png";
-import pemilihanOsis from "../assets/pemilihanOsis.png";
 import baenGame from "../assets/baenGame.png";
 import himami from "../assets/himami.jpeg";
+import baentechStore from "../assets/baentech-store.png";
 
 const imageMap = {
   bkaAcces,
-  pemilihanOsis,
   baenGame,
   himami,
+  baentechStore,
 };
 
 const projects = [
@@ -28,7 +28,7 @@ const projects = [
     category: "fullstack",
     categoryLabel: "Full Stack",
     description:
-      "Modern railway ticket booking and travel management platform inspired by KAI Access. Built with Java Spring Boot backend and Thymeleaf templating.",
+      "Website booking tiket kereta api terinspirasi dari KAI Access. Pakai Spring Boot di backend dan Thymeleaf buat tampilannya.",
     imageKey: "bkaAcces",
     tech: ["Java Spring Boot", "Thymeleaf", "MySQL", "HTML", "CSS", "JavaScript"],
     githubUrl: "https://github.com/mrbaen454-xx/bka_access.git",
@@ -39,29 +39,12 @@ const projects = [
     badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/30",
   },
   {
-    id: 2,
-    title: "Pemilihan Ketua OSIS",
-    category: "html",
-    categoryLabel: "HTML / CSS",
-    description:
-      "Interactive school election website with modern UI design. Simulates a complete digital voting system with candidate display and responsive design.",
-    imageKey: "pemilihanOsis",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    githubUrl:
-      "https://github.com/mrbaen454-xx/ProjekanWebPemilihanKetuaOsis-simulasi-tampilan-.git",
-    liveUrl: null,
-    featured: false,
-    accentColor: "from-amber-600/20 to-amber-700/10",
-    borderGlow: "hover:border-amber-500/30 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)]",
-    badgeColor: "bg-amber-500/20 text-amber-300 border-amber-500/30",
-  },
-  {
     id: 3,
     title: "Baen Game",
     category: "html",
     categoryLabel: "HTML / CSS",
     description:
-      "Game showcase website with modern layout and responsive experience. Features smooth navigation and interactive game catalog display.",
+      "Website katalog game dengan layout modern dan navigasi yang smooth. Projek latihan HTML/CSS pertama saya.",
     imageKey: "baenGame",
     tech: ["HTML5", "CSS3", "JavaScript"],
     githubUrl: "https://github.com/mrbaen454-xx/Baen-Game.git",
@@ -77,7 +60,7 @@ const projects = [
     category: "react",
     categoryLabel: "React",
     description:
-      "Official website of the Informatics Management Student Association (HIMAMI). Central hub for organizational info, activities, division structure, gallery, and contact details.",
+      "Website resmi Himpunan Mahasiswa Manajemen Informatika (HIMAMI). Berisi info organisasi, kegiatan, struktur divisi, galeri, dan kontak.",
     imageKey: "himami",
     tech: ["React", "JavaScript", "CSS"],
     githubUrl: "https://github.com/mrbaen454-xx/HIMAMI.git",
@@ -86,6 +69,22 @@ const projects = [
     accentColor: "from-cyan-600/20 to-cyan-700/10",
     borderGlow: "hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]",
     badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
+  },
+  {
+    id: 5,
+    title: "Baentech Store",
+    category: "fullstack",
+    categoryLabel: "Full Stack",
+    description:
+      "Website toko elektronik dengan arsitektur Microservices. Fitur utama: API Gateway, Eureka Server, payment gateway, dan login SSO.",
+    imageKey: "baentechStore",
+    tech: ["Java Spring Boot", "Microservices", "PostgreSQL", "API Gateway", "Eureka Server", "SSO", "React", "Tailwind CSS", "Vite"],
+    githubUrl: "#",
+    liveUrl: null,
+    featured: true,
+    accentColor: "from-emerald-600/20 to-emerald-700/10",
+    borderGlow: "hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.12)]",
+    badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
   },
 ];
 

@@ -127,8 +127,8 @@ const Hero = () => {
             >
               Mahasiswa D3 Manajemen Informatika di{" "}
               <span className="text-slate-300 font-medium">Universitas Nasional PASIM</span>
-              , fokus pada backend Java, Spring Boot, dan web development modern. Membangun
-              sistem backend yang andal, antarmuka web yang bersih, dan solusi digital nyata.
+              . Suka ngulik backend pakai Java & Spring Boot, sambil belajar bikin tampilan web
+              yang rapi pakai React. Lagi seru-serunya explore dunia programming.
             </motion.p>
 
             {/* CTA Buttons */}
