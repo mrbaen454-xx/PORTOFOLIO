@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import myphoto1 from "../assets/myphoto.png";
+import myphoto1 from "../assets/myphoto.jpeg";
 import { FaJava, FaReact, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiSpringboot, SiPostgresql } from "react-icons/si";
 import { Phone, Mail } from "lucide-react";

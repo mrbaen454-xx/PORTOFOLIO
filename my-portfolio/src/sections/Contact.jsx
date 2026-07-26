@@ -44,18 +44,18 @@ const Contact = () => {
           >
             <h2 className="text-xl md:text-[1.75rem] font-bold mb-6 text-black/90">Contact</h2>
             <div className="space-y-4 text-sm md:text-[15px]">
-              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+              <a href="mailto:msaroni454@gmail.com" className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group cursor-pointer">
                 <span className="text-black/60 transition-colors group-hover:text-black">Email</span>
-                <span className="font-semibold text-black/80 transition-colors group-hover:text-black">msaroni454@gmail.com</span>
-              </div>
-              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="font-semibold text-black/80 transition-colors group-hover:text-black group-hover:underline decoration-1 underline-offset-4">msaroni454@gmail.com</span>
+              </a>
+              <a href="https://wa.me/628882111780" target="_blank" rel="noopener noreferrer" className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group cursor-pointer">
                 <span className="text-black/60 transition-colors group-hover:text-black">Phone</span>
-                <span className="font-semibold text-black/80 transition-colors group-hover:text-black">+62 888 2111 780</span>
-              </div>
-              <div className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group">
+                <span className="font-semibold text-black/80 transition-colors group-hover:text-black group-hover:underline decoration-1 underline-offset-4">+62 888 2111 780</span>
+              </a>
+              <a href="https://maps.google.com/?q=Bandung,Indonesia" target="_blank" rel="noopener noreferrer" className="grid grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] group cursor-pointer">
                 <span className="text-black/60 transition-colors group-hover:text-black">Location</span>
-                <span className="font-semibold text-black/80 transition-colors group-hover:text-black">Bandung, Indonesia</span>
-              </div>
+                <span className="font-semibold text-black/80 transition-colors group-hover:text-black group-hover:underline decoration-1 underline-offset-4">Bandung, Indonesia</span>
+              </a>
             </div>
           </motion.div>
 
