@@ -38,16 +38,18 @@ const Skills = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-20 sm:mb-28"
         >
-          <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-black/80 mb-2">
-            Technical Skills
-          </span>
-          <h2 className="font-syncopate text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mt-2 mb-4 uppercase text-black/90">
-            My Tech Stack
-          </h2>
-          <p className="text-black/80 text-xs sm:text-sm font-semibold max-w-xl mx-auto leading-relaxed px-4">
-            Tools and technologies I use to build robust and scalable
-            applications.
-          </p>
+          <div className="inline-block bg-black/5 backdrop-blur-md border border-black/5 shadow-sm rounded-3xl p-8 sm:p-10 max-w-2xl mx-auto">
+            <span className="inline-flex items-center gap-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-black/80 mb-2">
+              Technical Skills
+            </span>
+            <h2 className="font-syncopate text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter mt-2 mb-4 uppercase text-black/90">
+              My Tech Stack
+            </h2>
+            <p className="text-black/80 text-xs sm:text-sm font-semibold max-w-xl mx-auto leading-relaxed">
+              Tools and technologies I use to build robust and scalable
+              applications.
+            </p>
+          </div>
         </motion.div>
 
         {/* Skill Categories Grid */}
@@ -62,7 +64,7 @@ const Skills = () => {
             <motion.div
               key={idx}
               variants={categoryVariants}
-              className="flex flex-col"
+              className="flex flex-col bg-black/5 backdrop-blur-md border border-black/5 shadow-sm rounded-3xl p-6 sm:p-8"
             >
               {/* Category Header */}
               <div className="mb-6 sm:mb-8">
@@ -100,43 +102,45 @@ const Skills = () => {
             hidden: { opacity: 0, y: 20 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
           }}
-          className="mt-20 sm:mt-28 text-center px-4"
+          className="mt-20 sm:mt-28 px-4"
         >
-          <p className="font-syncopate text-[10px] sm:text-xs font-bold uppercase tracking-widest text-black/80 mb-6 sm:mb-8">
-            Always learning new technologies
-          </p>
-          <motion.div 
-            className="flex flex-wrap justify-center gap-2 sm:gap-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.2 } }
-            }}
-          >
-            {[
-              "Spring Security",
-              "JWT (token)",
-              "Microservices",
-              "Eureka",
-              "Thymeleaf",
-              "Maven",
-              "JPA/Hibernate",
-            ].map((tech, i) => (
-              <motion.span
-                key={i}
-                variants={{
-                  hidden: { opacity: 0, scale: 0.8 },
-                  visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } }
-                }}
-                whileHover={{ y: -3, scale: 1.05 }}
-                className="inline-block text-[10px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 bg-transparent border border-black/20 rounded-full text-black/80 hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm cursor-default"
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </motion.div>
+          <div className="bg-black/5 backdrop-blur-md border border-black/5 shadow-sm rounded-3xl p-8 sm:p-10 max-w-4xl mx-auto text-center">
+            <p className="font-syncopate text-[10px] sm:text-xs font-bold uppercase tracking-widest text-black/80 mb-6 sm:mb-8">
+              Always learning new technologies
+            </p>
+            <motion.div 
+              className="flex flex-wrap justify-center gap-2 sm:gap-3"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.1 }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.05, delayChildren: 0.2 } }
+              }}
+            >
+              {[
+                "Spring Security",
+                "JWT (token)",
+                "Microservices",
+                "Eureka",
+                "Thymeleaf",
+                "Maven",
+                "JPA/Hibernate",
+              ].map((tech, i) => (
+                <motion.span
+                  key={i}
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.8 },
+                    visible: { opacity: 1, scale: 1, transition: { duration: 0.3 } }
+                  }}
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  className="inline-block text-[10px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 bg-white/50 border border-black/10 rounded-full text-black/80 hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm cursor-default"
+                >
+                  {tech}
+                </motion.span>
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 

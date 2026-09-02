@@ -1,37 +1,41 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const location = useLocation();
+  const { language, toggleLanguage, t } = useLanguage();
 
+  const [roleIndex, setRoleIndex] = useState(0);
+  const roles = [
+    "- Backend Developer -",
+    "- Frontend Developer -",
+    "- Full Stack Developer -"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Update navItems to use translations
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: t.nav.home, path: "/" },
+    { id: "about", label: t.nav.about, path: "/about" },
+    { id: "projects", label: t.nav.projects, path: "/projects" },
+    { id: "certificates", label: t.nav.certificates, path: "/certificates" },
+    { id: "contact", label: t.nav.contact, path: "/contact" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
-      // Active section detection
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPos = window.scrollY + 120;
-
-      sections.forEach((section) => {
-        if (section) {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(section.id);
-          }
-        }
-      });
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,12 +60,8 @@ const Navbar = () => {
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  const handleNavClick = (id) => {
+  const handleNavClick = () => {
     setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
   };
 
   return (
@@ -80,50 +80,88 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-10 relative">
 
             {/* LOGO */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => handleNavClick("home")}
+            <Link
+              to="/"
+              onClick={() => handleNavClick()}
               className="flex flex-col items-start cursor-pointer z-10"
             >
-              <span className="text-xl sm:text-2xl font-bold leading-none tracking-tighter text-black">Baen.</span>
-              <span className="text-[10px] sm:text-xs font-medium tracking-wide text-black uppercase">Station</span>
-            </motion.button>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex flex-col items-start"
+              >
+                <span className="text-xl sm:text-2xl font-bold leading-none tracking-tighter text-black">Baen.</span>
+                <span className="text-[10px] sm:text-xs font-medium tracking-wide text-black uppercase">Station</span>
+              </motion.div>
+            </Link>
 
             {/* CENTER TAG - from hero */}
-            <div className="hidden xl:block absolute left-1/2 -translate-x-1/2 pointer-events-none">
-              <span className="text-sm font-medium tracking-widest uppercase text-black">- WEB DEVELOPER -</span>
+            <div className="hidden xl:flex absolute left-1/2 -translate-x-1/2 pointer-events-none h-6 items-center justify-center overflow-hidden min-w-[300px]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={roleIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="absolute text-sm font-medium tracking-widest uppercase text-black"
+                >
+                  - {t.hero.roles[roleIndex]} -
+                </motion.span>
+              </AnimatePresence>
             </div>
 
             {/* DESKTOP NAV */}
             <div className="hidden md:flex items-center gap-1 z-10">
               {navItems.map((item, index) => (
-                <motion.button
+                <Link
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 + index * 0.08 }}
-                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    activeSection === item.id
-                      ? "text-black font-bold"
-                      : "text-black/60 hover:text-black"
-                  }`}
+                  to={item.path}
+                  onClick={() => handleNavClick()}
                 >
-                  {activeSection === item.id && (
-                    <motion.span
-                      layoutId="activeNav"
-                      className="absolute inset-0 rounded-lg bg-black/5"
-                      transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative z-10">{item.label}</span>
-                </motion.button>
+                  <motion.div
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 + index * 0.08 }}
+                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                      location.pathname === item.path
+                        ? "text-black font-bold"
+                        : "text-black/60 hover:text-black"
+                    }`}
+                  >
+                    {location.pathname === item.path && (
+                      <motion.span
+                        layoutId="activeNav"
+                        className="absolute inset-0 rounded-lg bg-black/5"
+                        transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
+                      />
+                    )}
+                    <span className="relative z-10">{item.label}</span>
+                  </motion.div>
+                </Link>
               ))}
               
-              {/* YEAR - from hero */}
-              <div className="ml-4 pl-4 border-l border-black/20">
-                <span className="text-base font-bold text-black">2026</span>
+              {/* LANGUAGE TOGGLE */}
+              <div className="ml-4 pl-4 border-l border-black/20 flex items-center">
+                <button
+                  onClick={toggleLanguage}
+                  className="relative flex items-center bg-black/5 hover:bg-black/10 transition-colors rounded-full p-1 border border-black/10 overflow-hidden"
+                  aria-label="Toggle language"
+                >
+                  <div className="flex relative z-10 text-xs font-bold w-[48px] justify-between px-1.5">
+                    <span className={`transition-colors duration-300 ${language === 'en' ? 'text-white' : 'text-black/40'}`}>EN</span>
+                    <span className={`transition-colors duration-300 ${language === 'id' ? 'text-white' : 'text-black/40'}`}>ID</span>
+                  </div>
+                  {/* Sliding pill */}
+                  <motion.div
+                    className="absolute top-1 bottom-1 w-[22px] bg-black rounded-full shadow-sm z-0"
+                    initial={false}
+                    animate={{ 
+                      x: language === 'en' ? 2 : 24 
+                    }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                </button>
               </div>
             </div>
 
@@ -197,28 +235,39 @@ const Navbar = () => {
               {/* Nav Links */}
               <div className="px-4 py-6 space-y-1">
                 {navItems.map((item, index) => (
-                  <motion.button
+                  <Link
                     key={item.id}
-                    onClick={() => handleNavClick(item.id)}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.07 }}
-                    className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left font-medium transition-all duration-200 ${
-                      activeSection === item.id
-                        ? "bg-black/5 text-black border border-black/10"
-                        : "text-black/60 hover:text-black hover:bg-black/5"
-                    }`}
+                    to={item.path}
+                    onClick={() => handleNavClick()}
                   >
-                    <span className="text-xs font-mono text-black/40">0{index + 1}</span>
-                    {item.label}
-                  </motion.button>
+                    <motion.div
+                      initial={{ opacity: 0, x: 30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.07 }}
+                      className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left font-medium transition-all duration-200 ${
+                        location.pathname === item.path
+                          ? "bg-black/5 text-black border border-black/10"
+                          : "text-black/60 hover:text-black hover:bg-black/5"
+                      }`}
+                    >
+                      <span className="text-xs font-mono text-black/40">0{index + 1}</span>
+                      {item.label}
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
 
               {/* Footer info */}
-              <div className="absolute bottom-8 left-0 right-0 px-6 text-center flex flex-col gap-2">
+              <div className="absolute bottom-8 left-0 right-0 px-6 text-center flex flex-col gap-4">
                 <span className="text-xs font-bold tracking-widest uppercase text-black">- WEB DEVELOPER -</span>
-                <p className="text-xs text-black/60">M. Saroni © 2026</p>
+                <button
+                  onClick={toggleLanguage}
+                  className="mx-auto flex items-center justify-center gap-2 bg-black/5 hover:bg-black/10 py-2 px-4 rounded-xl border border-black/10 transition-colors"
+                >
+                  <span className={`text-xs font-bold ${language === 'en' ? 'text-black' : 'text-black/40'}`}>EN</span>
+                  <span className="text-black/20">/</span>
+                  <span className={`text-xs font-bold ${language === 'id' ? 'text-black' : 'text-black/40'}`}>ID</span>
+                </button>
               </div>
             </motion.div>
           </>

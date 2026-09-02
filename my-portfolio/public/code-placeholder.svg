@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <rect width="800" height="450" fill="#0f172a"/>
+  <rect x="0" y="0" width="800" height="36" fill="#1e293b"/>
+  <circle cx="24" cy="18" r="6" fill="#ef4444"/>
+  <circle cx="44" cy="18" r="6" fill="#eab308"/>
+  <circle cx="64" cy="18" r="6" fill="#22c55e"/>
+  <text x="400" y="23" fill="#64748b" font-family="monospace" font-size="14" text-anchor="middle">source_code.main</text>
+  
+  <!-- Code lines -->
+  <g font-family="Consolas, Monaco, 'Courier New', monospace" font-size="16">
+    <!-- Line 1 -->
+    <text x="30" y="80" fill="#64748b">01</text>
+    <text x="70" y="80" fill="#c084fc">import</text>
+    <text x="135" y="80" fill="#38bdf8"> { System, Service } </text>
+    <text x="325" y="80" fill="#c084fc">from</text>
+    <text x="375" y="80" fill="#4ade80">'@core/app'</text><text x="480" y="80" fill="#f87171">;</text>
+
+    <!-- Line 2 -->
+    <text x="30" y="115" fill="#64748b">02</text>
+    
+    <!-- Line 3 -->
+    <text x="30" y="150" fill="#64748b">03</text>
+    <text x="70" y="150" fill="#f43f5e">class</text>
+    <text x="125" y="150" fill="#fbbf24"> ProjectEngine</text>
+    <text x="260" y="150" fill="#38bdf8"> implements </text>
+    <text x="375" y="150" fill="#fbbf24">IService</text>
+    <text x="460" y="150" fill="#e2e8f0"> {</text>
+
+    <!-- Line 4 -->
+    <text x="30" y="185" fill="#64748b">04</text>
+    <text x="100" y="185" fill="#c084fc">private</text>
+    <text x="175" y="185" fill="#e2e8f0"> status:</text>
+    <text x="250" y="185" fill="#38bdf8"> String</text>
+    <text x="315" y="185" fill="#e2e8f0"> = </text>
+    <text x="345" y="185" fill="#4ade80">"DEPLOYED"</text><text x="440" y="185" fill="#e2e8f0">;</text>
+
+    <!-- Line 5 -->
+    <text x="30" y="220" fill="#64748b">05</text>
+
+    <!-- Line 6 -->
+    <text x="30" y="255" fill="#64748b">06</text>
+    <text x="100" y="255" fill="#c084fc">public async</text>
+    <text x="220" y="255" fill="#60a5fa"> execute</text>
+    <text x="290" y="255" fill="#e2e8f0">():</text>
+    <text x="320" y="255" fill="#38bdf8"> Promise</text>
+    <text x="390" y="255" fill="#e2e8f0">&lt;</text><text x="400" y="255" fill="#38bdf8">Void</text><text x="440" y="255" fill="#e2e8f0">&gt; {</text>
+
+    <!-- Line 7 -->
+    <text x="30" y="290" fill="#64748b">07</text>
+    <text x="130" y="290" fill="#f43f5e">await</text>
+    <text x="185" y="290" fill="#60a5fa"> System</text>
+    <text x="250" y="290" fill="#e2e8f0">.</text><text x="260" y="290" fill="#60a5fa">init</text><text x="300" y="290" fill="#e2e8f0">();</text>
+
+    <!-- Line 8 -->
+    <text x="30" y="325" fill="#64748b">08</text>
+    <text x="130" y="325" fill="#60a5fa">console</text><text x="200" y="325" fill="#e2e8f0">.</text><text x="210" y="325" fill="#60a5fa">log</text><text x="240" y="325" fill="#e2e8f0">(</text><text x="250" y="325" fill="#4ade80">"System operational..."</text><text x="475" y="325" fill="#e2e8f0">);</text>
+
+    <!-- Line 9 -->
+    <text x="30" y="360" fill="#64748b">09</text>
+    <text x="100" y="360" fill="#e2e8f0">}</text>
+
+    <!-- Line 10 -->
+    <text x="30" y="395" fill="#64748b">10</text>
+    <text x="70" y="395" fill="#e2e8f0">}</text>
+  </g>
+</svg>
