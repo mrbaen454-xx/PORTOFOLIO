@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,15 +15,7 @@ const Footer = () => {
         {/* Bottom Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[13px] text-gray-500 flex items-center gap-1.5 font-medium">
-            © {currentYear} M. Saroni. All rights reserved. Built with
-            <motion.span
-              animate={{ scale: [1, 1.25, 1] }}
-              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-              className="text-black"
-            >
-              <Heart size={14} fill="currentColor" />
-            </motion.span>
-            by Baen
+            © {currentYear} M. Saroni. All rights reserved. Built by Baen
           </p>
 
           {/* Back to top */}
