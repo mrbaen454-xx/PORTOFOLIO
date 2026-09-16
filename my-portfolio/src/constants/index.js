@@ -166,7 +166,7 @@ export const projects = [
     image: null,
     imageKey: "pedulikita",
     tech: ["Node.js", "Express.js", "PostgreSQL", "Prisma ORM", "React.js", "Tailwind CSS"],
-    githubUrl: "#",
+    githubUrl: "https://github.com/mrbaen454-xx/PeduliKIta.git",
     liveUrl: null,
     featured: true,
   },
