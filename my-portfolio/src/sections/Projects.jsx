@@ -7,6 +7,7 @@ import baenGame from "../assets/baenGame.png";
 import himami from "../assets/himami.jpeg";
 import baentechStore from "../assets/baentech-store.png";
 import codeImage from "../assets/code.jpeg";
+import pedulikita from "../assets/pedulikita.png";
 
 const imageMap = {
   bkaAcces,
@@ -14,6 +15,7 @@ const imageMap = {
   himami,
   baentechStore,
   codeImage,
+  pedulikita,
 };
 
 const projects = [
@@ -65,6 +67,13 @@ const projects = [
     imageKey: "himami",
     tech: ["React", "JavaScript", "Tailwind CSS", "Vite"],
     githubUrl: "https://github.com/mrbaen454-xx/HIMAMI.git",
+  },
+  {
+    id: 8,
+    title: "PeduliKita",
+    imageKey: "pedulikita",
+    tech: ["Node.js", "Express.js", "PostgreSQL", "Prisma ORM", "React.js", "Tailwind CSS"],
+    githubUrl: "#",
   },
 ];
 

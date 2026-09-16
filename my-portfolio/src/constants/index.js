@@ -158,6 +158,18 @@ export const projects = [
     liveUrl: null,
     featured: true,
   },
+  {
+    id: 8,
+    title: "PeduliKita",
+    category: "fullstack",
+    description: "Sistem donasi dan kepedulian sosial.",
+    image: null,
+    imageKey: "pedulikita",
+    tech: ["Node.js", "Express.js", "PostgreSQL", "Prisma ORM", "React.js", "Tailwind CSS"],
+    githubUrl: "#",
+    liveUrl: null,
+    featured: true,
+  },
 ];
 
 // ==================== CONTACT INFO ====================

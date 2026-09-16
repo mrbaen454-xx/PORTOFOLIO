@@ -144,6 +144,11 @@ export const translations = {
           id: 6,
           title: "HIMAMI Website",
           desc: "Company profile website for the HIMAMI organization built using React and Tailwind CSS.",
+        },
+        {
+          id: 8,
+          title: "PeduliKita",
+          desc: "A social donation and care system built with Node.js, Express, React, and PostgreSQL.",
         }
       ]
     },
@@ -349,6 +354,11 @@ export const translations = {
           id: 6,
           title: "HIMAMI Website",
           desc: "Website profil perusahaan untuk organisasi HIMAMI yang dibangun menggunakan React dan Tailwind CSS.",
+        },
+        {
+          id: 8,
+          title: "PeduliKita",
+          desc: "Sistem donasi dan kepedulian sosial yang dibangun dengan Node.js, Express, React, dan PostgreSQL.",
         }
       ]
     },
