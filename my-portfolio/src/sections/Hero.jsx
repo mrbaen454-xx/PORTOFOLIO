@@ -1,16 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
 const Hero = () => {
-  const navigate = useNavigate();
   const { t } = useLanguage();
-
-  const scrollToProjects = () => {
-    navigate("/projects");
-  };
 
   return (
     <section

@@ -26,13 +26,32 @@ const Navbar = () => {
 
   // Update navItems to use translations
   const navItems = [
-    { id: "home", label: t.nav.home, path: "/" },
-    { id: "about", label: t.nav.about, path: "/about" },
-    { id: "projects", label: t.nav.projects, path: "/projects" },
-    { id: "certificates", label: t.nav.certificates, path: "/certificates" },
-    { id: "contact", label: t.nav.contact, path: "/contact" },
+    { id: "home", label: t.nav.home, path: "/#home" },
+    { id: "about", label: t.nav.about, path: "/#about" },
+    { id: "projects", label: t.nav.projects, path: "/#projects" },
+    { id: "certificates", label: t.nav.certificates, path: "/#certificates" },
+    { id: "contact", label: t.nav.contact, path: "/#contact" },
   ];
 
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -114,9 +133,9 @@ const Navbar = () => {
             {/* DESKTOP NAV */}
             <div className="hidden md:flex items-center gap-1 z-10">
               {navItems.map((item, index) => (
-                <Link
+                <a
                   key={item.id}
-                  to={item.path}
+                  href={item.path}
                   onClick={() => handleNavClick()}
                 >
                   <motion.div
@@ -124,12 +143,12 @@ const Navbar = () => {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.1 + index * 0.08 }}
                     className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      location.pathname === item.path
+                      activeSection === item.id
                         ? "text-black font-bold"
                         : "text-black/60 hover:text-black"
                     }`}
                   >
-                    {location.pathname === item.path && (
+                    {activeSection === item.id && (
                       <motion.span
                         layoutId="activeNav"
                         className="absolute inset-0 rounded-lg bg-black/5"
@@ -138,7 +157,7 @@ const Navbar = () => {
                     )}
                     <span className="relative z-10">{item.label}</span>
                   </motion.div>
-                </Link>
+                </a>
               ))}
               
               {/* LANGUAGE TOGGLE */}
@@ -235,9 +254,9 @@ const Navbar = () => {
               {/* Nav Links */}
               <div className="px-4 py-6 space-y-1">
                 {navItems.map((item, index) => (
-                  <Link
+                  <a
                     key={item.id}
-                    to={item.path}
+                    href={item.path}
                     onClick={() => handleNavClick()}
                   >
                     <motion.div
@@ -245,7 +264,7 @@ const Navbar = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.07 }}
                       className={`w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-left font-medium transition-all duration-200 ${
-                        location.pathname === item.path
+                        activeSection === item.id
                           ? "bg-black/5 text-black border border-black/10"
                           : "text-black/60 hover:text-black hover:bg-black/5"
                       }`}
@@ -253,7 +272,7 @@ const Navbar = () => {
                       <span className="text-xs font-mono text-black/40">0{index + 1}</span>
                       {item.label}
                     </motion.div>
-                  </Link>
+                  </a>
                 ))}
               </div>
 

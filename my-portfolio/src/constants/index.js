@@ -170,6 +170,18 @@ export const projects = [
     liveUrl: null,
     featured: true,
   },
+  {
+    id: 9,
+    title: "BankCore",
+    category: "fullstack",
+    description: "Aplikasi Core Banking lengkap dengan Admin Portal dan Mobile Banking Suite.",
+    image: null,
+    imageKey: "bankcore",
+    tech: ["Java Spring Boot", "React Native", "React 18", "Vite", "TypeScript", "Tailwind CSS"],
+    githubUrl: "https://github.com/mrbaen454-xx/BankCore.git",
+    liveUrl: null,
+    featured: true,
+  },
 ];
 
 // ==================== CONTACT INFO ====================

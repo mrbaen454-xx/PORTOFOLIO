@@ -149,6 +149,11 @@ export const translations = {
           id: 8,
           title: "PeduliKita",
           desc: "A social donation and care system built with Node.js, Express, React, and PostgreSQL.",
+        },
+        {
+          id: 9,
+          title: "BankCore",
+          desc: "A comprehensive Core Banking application with Employee Admin Portal and Customer Mobile Banking Suite.",
         }
       ]
     },
@@ -359,6 +364,11 @@ export const translations = {
           id: 8,
           title: "PeduliKita",
           desc: "Sistem donasi dan kepedulian sosial yang dibangun dengan Node.js, Express, React, dan PostgreSQL.",
+        },
+        {
+          id: 9,
+          title: "BankCore",
+          desc: "Aplikasi Core Banking komprehensif yang dilengkapi dengan Portal Admin Pegawai dan Mobile Banking Suite untuk Nasabah.",
         }
       ]
     },

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useNavigate } from "react-router-dom";
 
 import bkaAcces from "../assets/bkaAcces.png";
 import baenGame from "../assets/baenGame.png";
@@ -8,6 +9,7 @@ import himami from "../assets/himami.jpeg";
 import baentechStore from "../assets/baentech-store.png";
 import codeImage from "../assets/code.jpeg";
 import pedulikita from "../assets/pedulikita.png";
+import bankcore from "../assets/BankCore.jpeg";
 
 const imageMap = {
   bkaAcces,
@@ -16,6 +18,7 @@ const imageMap = {
   baentechStore,
   codeImage,
   pedulikita,
+  bankcore,
 };
 
 const projects = [
@@ -75,10 +78,18 @@ const projects = [
     tech: ["Node.js", "Express.js", "PostgreSQL", "Prisma ORM", "React.js", "Tailwind CSS"],
     githubUrl: "https://github.com/mrbaen454-xx/PeduliKIta.git",
   },
+  {
+    id: 9,
+    title: "BankCore",
+    imageKey: "bankcore",
+    tech: ["Java Spring Boot", "React Native", "React 18", "Vite", "TypeScript", "Tailwind CSS"],
+    githubUrl: "https://github.com/mrbaen454-xx/BankCore.git",
+  },
 ];
 
 const Projects = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -137,7 +148,7 @@ const Projects = () => {
               key={proj.id} 
               variants={itemVariants} 
               className="flex flex-col w-[280px] sm:w-[310px] h-full group cursor-pointer" 
-              onClick={() => window.open(proj.githubUrl, '_blank')}
+              onClick={() => navigate(`/project/${proj.id}`)}
             >
               
               {/* The Card */}
@@ -160,10 +171,10 @@ const Projects = () => {
                     alt={proj.title}
                     className="w-full h-full object-contain p-1 transition-transform duration-700 group-hover:scale-110"
                   />
-                  {/* View Code Button overlay on hover */}
+                  {/* View Details Button overlay on hover */}
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
                     <div className="bg-white text-black font-bold text-xs py-1.5 px-4 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      View Code
+                      View Details
                     </div>
                   </div>
                 </div>
