@@ -198,6 +198,16 @@ export const translations = {
           id: 7,
           category: "Training",
           desc: "Building RESTful APIs with the Spring Boot framework."
+        },
+        {
+          id: 8,
+          category: "Training",
+          desc: "Intensive modern Front-End development training using React."
+        },
+        {
+          id: 9,
+          category: "Appreciation",
+          desc: "Certificate of appreciation for outstanding contribution as a Web Programming (HTML, CSS, JavaScript) instructor."
         }
       ]
     },
@@ -413,6 +423,16 @@ export const translations = {
           id: 7,
           category: "Pelatihan",
           desc: "Pelatihan membangun RESTful API dengan framework Spring Boot."
+        },
+        {
+          id: 8,
+          category: "Pelatihan",
+          desc: "Pelatihan intensif pengembangan Front-End modern menggunakan React."
+        },
+        {
+          id: 9,
+          category: "Apresiasi",
+          desc: "Sertifikat apresiasi atas kontribusi sebagai instruktur pelatihan Web Programming (HTML, CSS, JavaScript)."
         }
       ]
     },

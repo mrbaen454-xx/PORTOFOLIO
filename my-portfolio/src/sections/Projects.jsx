@@ -8,7 +8,7 @@ import baenGame from "../assets/baenGame.png";
 import himami from "../assets/himami.jpeg";
 import baentechStore from "../assets/baentech-store.png";
 import codeImage from "../assets/code.jpeg";
-import pedulikita from "../assets/pedulikita.png";
+import pedulikita from "../assets/pedulikita.jpeg";
 import bankcore from "../assets/BankCore.jpeg";
 
 const imageMap = {

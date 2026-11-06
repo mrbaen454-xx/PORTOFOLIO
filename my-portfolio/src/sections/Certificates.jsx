@@ -3,12 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
-import logikaImage from "../assets/D3-SARONI Logika Algoritma.png";
-import dataStrukturImage from "../assets/D3-SARONI Struktur Data.png";
-import dataBaseImage from "../assets/D3-SARONI Data Base.png";
-import webDasarImage from "../assets/D3 SARONI Web.png";
-import githubImage from "../assets/D3 SARONI GitHub.png";
-import javaFundImage from "../assets/D3 SARONI Java Fundamental.png";
+import apresiasiInstrukturImage from "../assets/01_Sertifikat_Apresiasi_Instruktur_Web_Programming.png";
+import logikaImage from "../assets/02_Sertifikat_Logika_Algoritma_85.png";
+import dataStrukturImage from "../assets/03_Sertifikat_Data_Structure_89.png";
+import dataBaseImage from "../assets/04_Sertifikat_Database_83.png";
+import githubImage from "../assets/05_Sertifikat_Git_GitHub_91.png";
+import webDasarImage from "../assets/06_Sertifikat_Web_Programming_84.png";
+import javaLanjutImage from "../assets/07_Sertifikat_Advanced_BackEnd_Java_90.png";
+import reactImage from "../assets/08_Sertifikat_React_FrontEnd_96-5.png";
+import javaFundImage from "../assets/09_Sertifikat_Fundamental_BackEnd_Java_86.png";
 
 const certificatesData = [
   {
@@ -78,8 +81,28 @@ const certificatesData = [
     issuer: "Beasiswa PUB",
     year: "2026",
     desc: "Pelatihan membangun RESTful API dengan framework Spring Boot.",
-    image: null,
-    available: false,
+    image: javaLanjutImage,
+    available: true,
+  },
+  {
+    id: 8,
+    title: "React Front-End Development",
+    category: "Pelatihan",
+    issuer: "Beasiswa PUB",
+    year: "2026",
+    desc: "Pelatihan intensif pengembangan Front-End modern menggunakan React.",
+    image: reactImage,
+    available: true,
+  },
+  {
+    id: 9,
+    title: "Instruktur Pelatihan Web Programming",
+    category: "Apresiasi",
+    issuer: "Beasiswa PUB",
+    year: "2026",
+    desc: "Sertifikat apresiasi atas kontribusi sebagai instruktur pelatihan Web Programming (HTML, CSS, JavaScript).",
+    image: apresiasiInstrukturImage,
+    available: true,
   },
 ];
 
